@@ -13,10 +13,11 @@ teorii, odkazy na zdroje a hlavně praktická cvičení.
 
 ## Jak repo funguje
 
-Každé téma má stejnou strukturu (viz [`_template`](_template/)):
+Každé téma se dělí na koncepty, každý koncept má vlastní číslovanou složku
+(viz [`_template`](_template/)):
 
-- `theory/` — jednotlivé koncepty, jeden soubor na koncept
-- `resources/` — odkazy na dokumentaci, tutoriály, články (podle konceptu)
-- `exercises/` — jednotlivá cvičení, řazená podle obtížnosti
+- `THEORY.md` — stručné shrnutí konceptu
+- `RESOURCES.md` — odkazy na dokumentaci, tutoriály, články
+- `exercises/` — jednotlivá cvičení ke konceptu, řazená podle obtížnosti
 
 Detaily a konvence viz [`CLAUDE.md`](CLAUDE.md).
