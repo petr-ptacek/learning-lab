@@ -16,7 +16,8 @@ skutečné příklady k řešení, ne jen teorie.
     └── exercises/
         └── NN-nazev-ukolu/
             ├── README.md      # zadání úkolu
-            └── solution/      # řešení (kód)
+            └── solution/
+                └── main.py    # prázdný stub, sem se píše řešení
 
 projects/               # větší cvičné projekty, klidně napříč tématy
 _template/               # šablona pro založení nového tématu / konceptu
@@ -36,7 +37,8 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   (ne jen popis teorie) a založ ho do `exercises/NN-nazev/README.md` podle
   vzoru výše. Obtížnost cvičení v rámci konceptu ať postupně roste.
 - Zadání a řešení drž oddělené — řešení až do `solution/`, ať si úkol
-  můžu nejdřív zkusit sám.
+  můžu nejdřív zkusit sám. Ke každému cvičení rovnou založ prázdný
+  `solution/main.py` stub, ať ho nemusím zakládat ručně.
 - Do `THEORY.md` a `RESOURCES.md` piš stručně a věcně (jsou to poznámky ke
   konkrétnímu konceptu, ne kniha), s odkazy na oficiální dokumentaci
   (preferuj oficiální docs před blogy).
