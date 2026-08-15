@@ -48,6 +48,22 @@ print(f"Ahoj, {jmeno}!")  # f-string — vkládání proměnných do textu
 vek = int(input("Kolik ti je let? "))
 ```
 
+## Formátovací mini-jazyk
+
+Uvnitř `{}` ve f-stringu můžeš za hodnotu přidat `:` a specifikaci formátu:
+`{hodnota:zarovnání šířka .přesnost typ}`.
+
+```python
+f"{'Kelvin:':<12}"     # doleva, doplní mezerami na šířku 12
+f"{cislo:>10.1f}"      # doprava, šířka 10, 1 desetinné místo
+f"{cislo:^10}"         # na střed, šířka 10
+f"{cena:,.2f}"         # tisícový oddělovač + 2 desetinná místa
+f"{podil:.0%}"         # zobrazí jako procenta, 0 desetinných míst
+```
+
+Výchozí zarovnání: čísla doprava, text doleva. Bez specifikace šířky se nic
+nedoplňuje — zarovnání má smysl, jen když je šířka pole pevná.
+
 ## Konverze typů
 
 - `int("42")` → `42`
