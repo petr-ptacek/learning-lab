@@ -37,3 +37,4 @@ Nové téma = zkopírovat `_template/` a přejmenovat.
 - Nepřidávej abstrakce/tooling navíc (CI, linters, package manager configy),
   pokud o to výslovně nepožádám — je to učební repo, ne produkční projekt.
 - Odpovídej a piš obsah česky, kód a technické termíny normálně anglicky.
+- Commit zprávy piš podle [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
