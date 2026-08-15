@@ -9,6 +9,7 @@ skutečné příklady k řešení, ne jen teorie.
 ```
 <téma>/                        # např. vue, react, python, django
 ├── CLAUDE.md                  # specifika daného tématu (verze, styl, konvence)
+├── ROADMAP.md                 # plánované koncepty v pořadí + stav (zvládnuto/ne)
 └── NN-nazev-konceptu/         # jeden koncept = jedna složka
     ├── THEORY.md              # stručné shrnutí konceptu
     ├── RESOURCES.md           # odkazy k danému konceptu
@@ -26,6 +27,11 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
 
 ## Jak mi pomáhat (pokyny pro Claude)
 
+- **Praxe má vždy přednost před teorií.** Cílem je jazyk/framework zvládnout
+  důkladně, ale cestou přes řešení reálných problémů a programování — ne
+  čtením. `THEORY.md` drž na nutném minimu (stručné shrnutí + odkazy do
+  `RESOURCES.md`), těžiště je v `exercises/`. Ke každému konceptu radši
+  víc menších praktických úloh než dlouhý teoretický text.
 - Když mě žádáš o cvičení ke konceptu, **generuj reálné praktické zadání**
   (ne jen popis teorie) a založ ho do `exercises/NN-nazev/README.md` podle
   vzoru výše. Obtížnost cvičení v rámci konceptu ať postupně roste.
@@ -34,6 +40,8 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
 - Do `THEORY.md` a `RESOURCES.md` piš stručně a věcně (jsou to poznámky ke
   konkrétnímu konceptu, ne kniha), s odkazy na oficiální dokumentaci
   (preferuj oficiální docs před blogy).
+- Každý `THEORY.md` musí začínat sekcí **Cíl** — co se v konceptu naučíš
+  a k čemu / na čem to stavíš (viz `_template/NN-nazev-konceptu/THEORY.md`).
 - Nepřidávej abstrakce/tooling navíc (CI, linters, package manager configy),
   pokud o to výslovně nepožádám — je to učební repo, ne produkční projekt.
 - Odpovídej a piš obsah česky, kód a technické termíny normálně anglicky.

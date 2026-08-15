@@ -1,5 +1,12 @@
 # 01 — Základy
 
+## Cíl
+
+Naučit se základní stavební kameny Pythonu, bez kterých se nedá napsat ani
+jednoduchý skript: jak Python spustit, jak si uložit hodnotu do proměnné,
+jaké jsou základní datové typy a jak se s uživatelem "bavit" přes vstup a
+výstup. Vše ostatní (podmínky, cykly, funkce, ...) na tomhle staví.
+
 ## Spuštění
 
 - `python3 --version` — ověření, že máš Python nainstalovaný

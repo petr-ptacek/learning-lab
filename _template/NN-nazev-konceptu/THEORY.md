@@ -1,6 +1,8 @@
 # NN — Název konceptu
 
-Stručné shrnutí konceptu — referenční poznámky, ne kompletní učebnice.
+## Cíl
+
+Co se v tomto konceptu naučíš a k čemu to bude / na čem to stavíš.
 
 ## Klíčové pojmy
 

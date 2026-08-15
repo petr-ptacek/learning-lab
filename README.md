@@ -13,8 +13,8 @@ teorii, odkazy na zdroje a hlavně praktická cvičení.
 
 ## Jak repo funguje
 
-Každé téma se dělí na koncepty, každý koncept má vlastní číslovanou složku
-(viz [`_template`](_template/)):
+Každé téma má `ROADMAP.md` s plánovanými koncepty v pořadí a jejich stavem.
+Každý koncept má vlastní číslovanou složku (viz [`_template`](_template/)):
 
 - `THEORY.md` — stručné shrnutí konceptu
 - `RESOURCES.md` — odkazy na dokumentaci, tutoriály, články
