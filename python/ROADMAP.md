@@ -3,11 +3,12 @@
 Plán konceptů v doporučeném pořadí. Zaškrtnuto = koncept zvládnutý (teorie
 prostudovaná + cvičení vyřešená), ne jen založený.
 
-- [ ] 01-zaklady — založeno, cvičení k vyřešení
+- [x] 01-zaklady
 - [ ] 02-podminky-cykly
 - [ ] 03-funkce
 - [ ] 04-datove-struktury
 - [ ] 05-stringy
-- [ ] 06-vyjimky
-- [ ] 07-soubory
-- [ ] 08-moduly-balicky
+- [ ] 06-oop-zaklady — třídy, instance, `__init__`, metody, atributy
+- [ ] 07-vyjimky
+- [ ] 08-soubory
+- [ ] 09-moduly-balicky
