@@ -36,6 +36,9 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
 - Když mě žádáš o cvičení ke konceptu, **generuj reálné praktické zadání**
   (ne jen popis teorie) a založ ho do `exercises/NN-nazev/README.md` podle
   vzoru výše. Obtížnost cvičení v rámci konceptu ať postupně roste.
+- Do zadání (`README.md`) vždy přidej **víc příkladů vstup/výstup** (ne jen
+  jeden), ať mám k dispozici širší množinu reálných případů včetně
+  okrajových (např. nula, záporné číslo, hraniční hodnota).
 - Zadání a řešení drž oddělené — řešení až do `solution/`, ať si úkol
   můžu nejdřív zkusit sám. Ke každému cvičení rovnou založ prázdný
   `solution/main.py` stub, ať ho nemusím zakládat ručně.
@@ -48,3 +51,7 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   pokud o to výslovně nepožádám — je to učební repo, ne produkční projekt.
 - Odpovídej a piš obsah česky, kód a technické termíny normálně anglicky.
 - Commit zprávy piš podle [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
+- **Při kontrole vlastního řešení cvičení nikdy neprozrazuj chybu ani opravu
+  přímo.** Naváděj otázkami a nápovědami (co zkontrolovat, co si vypsat,
+  co se stane pro konkrétní vstup), dokud na řešení nepřijdu sám. Přímou
+  odpověď řekni jen když o ni výslovně požádám.
