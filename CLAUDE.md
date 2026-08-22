@@ -65,7 +65,10 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   vedle `solution/` složku `reference/main.py` s tvým vlastním řešením
   stejného zadání — idiomatický kód, jak bys to napsal ty, jen pro srovnání.
   `reference/` nikdy nezakládej dřív (u nevyřešeného cvičení), ať si úkol
-  nejdřív vyřeším sám beze spoileru.
+  nejdřív vyřeším sám beze spoileru. Tohle pravidlo má i vlastní skill
+  [`reference-solution`](.claude/skills/reference-solution/SKILL.md) —
+  použij ho v momentě, kdy potvrzuješ správnost řešení, ať na to
+  nezapomeneš.
 - Bonus patří vždy do sesterského souboru `bonus.py` vedle `main.py`
   (`solution/bonus.py`, a po dořešení i `reference/bonus.py`) — ne do
   jednoho `main.py` s base řešením a ne do nové složky. Složku navíc zaveď
