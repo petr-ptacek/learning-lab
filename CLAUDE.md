@@ -16,8 +16,10 @@ skutečné příklady k řešení, ne jen teorie.
     └── exercises/
         └── NN-nazev-ukolu/
             ├── README.md      # zadání úkolu
-            └── solution/
-                └── main.py    # prázdný stub, sem se píše řešení
+            ├── solution/
+            │   └── main.py    # prázdný stub, sem se píše řešení
+            └── reference/     # jen u už vyřešených cvičení, viz níže
+                └── main.py    # moje (Claude) referenční řešení
 
 projects/               # větší cvičné projekty, klidně napříč tématy
 _template/               # šablona pro založení nového tématu / konceptu
@@ -55,3 +57,9 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   přímo.** Naváděj otázkami a nápovědami (co zkontrolovat, co si vypsat,
   co se stane pro konkrétní vstup), dokud na řešení nepřijdu sám. Přímou
   odpověď řekni jen když o ni výslovně požádám.
+- Jakmile je moje vlastní řešení cvičení hotové (zkontrolované a
+  odsouhlasené jako funkčně správné), založ vedle `solution/` složku
+  `reference/main.py` s tvým vlastním řešením stejného zadání — idiomatický
+  kód, jak bys to napsal ty, jen pro srovnání. `reference/` nikdy nezakládej
+  dřív (u nevyřešeného cvičení), ať si úkol nejdřív vyřeším sám beze
+  spoileru.
