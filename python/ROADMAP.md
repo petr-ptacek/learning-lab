@@ -11,8 +11,10 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 - [ ] 04-datove-struktury
 - [ ] 05-vestavene-funkce — `len`, `min`/`max`, `sum`, `sorted`, `enumerate`,
       `zip`, `map`, `filter`, `any`/`all` (staví na 04-datove-struktury)
-- [ ] 06-stringy
-- [ ] 07-oop-zaklady — třídy, instance, `__init__`, metody, atributy
-- [ ] 08-vyjimky
-- [ ] 09-soubory
-- [ ] 10-moduly-balicky
+- [ ] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
+      `next()`/`iter()` (staví na 03-funkce a 04-datove-struktury)
+- [ ] 07-stringy
+- [ ] 08-oop-zaklady — třídy, instance, `__init__`, metody, atributy
+- [ ] 09-vyjimky
+- [ ] 10-soubory
+- [ ] 11-moduly-balicky
