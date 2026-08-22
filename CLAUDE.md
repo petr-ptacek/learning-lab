@@ -58,8 +58,14 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   co se stane pro konkrétní vstup), dokud na řešení nepřijdu sám. Přímou
   odpověď řekni jen když o ni výslovně požádám.
 - Jakmile je moje vlastní řešení cvičení hotové (zkontrolované a
-  odsouhlasené jako funkčně správné), založ vedle `solution/` složku
-  `reference/main.py` s tvým vlastním řešením stejného zadání — idiomatický
-  kód, jak bys to napsal ty, jen pro srovnání. `reference/` nikdy nezakládej
-  dřív (u nevyřešeného cvičení), ať si úkol nejdřív vyřeším sám beze
-  spoileru.
+  odsouhlasené jako funkčně správné), **automaticky** (bez ptaní) založ
+  vedle `solution/` složku `reference/main.py` s tvým vlastním řešením
+  stejného zadání — idiomatický kód, jak bys to napsal ty, jen pro srovnání.
+  `reference/` nikdy nezakládej dřív (u nevyřešeného cvičení), ať si úkol
+  nejdřív vyřeším sám beze spoileru.
+- Pokud má cvičení bonus, který dává smysl řešit v samostatném souboru,
+  patří vedle `main.py` jako sesterský soubor `bonus.py` (`solution/bonus.py`,
+  a pak i `reference/bonus.py`) — ne do nové složky. Složku navíc zaveď jen
+  tehdy, když si to daný koncept opravdu vyžádá (typicky až
+  `09-moduly-balicky`, kde se řeší `import` mezi vlastními moduly) — do
+  té doby nepřipravuj strukturu na hypotetické budoucí případy.
