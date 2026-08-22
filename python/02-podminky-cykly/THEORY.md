@@ -66,3 +66,57 @@ while pokusy < 3:
 
 - `break` — okamžitě cyklus ukončí
 - `continue` — přeskočí zbytek aktuální iterace a pokračuje další
+
+## Vnořené cykly
+
+Cyklus může obsahovat další cyklus (typicky pro tabulky/mřížky — např.
+násobilka). Vnitřní cyklus se provede celý pro každou jednu iteraci
+vnějšího:
+
+```python
+for radek in range(1, 4):
+    for sloupec in range(1, 4):
+        print(f"{radek}x{sloupec}", end=" ")
+    print()  # nový řádek po dokončení vnitřního cyklu
+```
+
+`break`/`continue` uvnitř vnitřního cyklu ovlivní jen ten vnitřní, ne ten
+vnější.
+
+## `else` u `for`/`while`
+
+Málo známá, ale užitečná vlastnost — `else` u cyklu se provede, pokud
+cyklus doběhl **bez** `break`u. Hodí se místo příznakové (`bool`)
+proměnné, když něco hledáš:
+
+```python
+for cislo in range(2, n):
+    if n % cislo == 0:
+        print("Není prvočíslo")
+        break
+else:
+    print("Je prvočíslo")
+```
+
+## Ternární výraz (podmínka na jeden řádek)
+
+Zkrácený zápis `if`/`else`, když jen vybíráš mezi dvěma hodnotami:
+
+```python
+stav = "dospělý" if vek >= 18 else "nezletilý"
+```
+
+Vhodné pro jednoduché přiřazení, ne pro víc větví nebo delší logiku —
+tam pořád patří normální `if`/`elif`/`else`.
+
+## `while True` + `break`
+
+Časté v hrách/menu — cyklus, který běží "navždy", dokud ho nezastavíš
+podmínkou uvnitř (viz cvičení "Hádej číslo"):
+
+```python
+while True:
+    pokus = input("Zadej: ")
+    if pokus == "konec":
+        break
+```
