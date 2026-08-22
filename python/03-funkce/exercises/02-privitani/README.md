@@ -4,11 +4,10 @@ Vyzkoušej si parametr s výchozí hodnotou.
 
 ## Požadavky
 
-- Napiš funkci `greet(name, greeting="Ahoj")` — druhý parametr má výchozí
-  hodnotu `"Ahoj"`.
+- Napiš funkci `greet(name, greeting="Ahoj")` — druhý parametr má výchozí hodnotu `"Ahoj"`.
 - Funkce vrátí (nevypisuje!) zprávu ve tvaru `"{greeting}, {name}!"`.
-- Zavolej funkci jednou jen se jménem (použije se výchozí `greeting`) a
-  jednou se jménem i vlastním pozdravem — obojí na základě `input()`
+- Zavolej funkci jednou jen se jménem (použije se výchozí `greeting`) a jednou se jménem i vlastním pozdravem — obojí na
+  základě `input()`
   (prázdný vstup u pozdravu = použij výchozí hodnotu).
 - Výstup např.:
 
@@ -28,12 +27,12 @@ Ahoj, Petr!
 
 ## Bonus
 
-- Přidej třetí volitelný parametr `exclamation_count=1`, který určí,
-  kolik vykřičníků se má na konci zprávy vypsat místo jednoho.
+- Přidej třetí volitelný parametr `exclamation_count=1`, který určí, kolik vykřičníků se má na konci zprávy vypsat místo
+  jednoho.
 
 ### Příklady vstup/výstup (bonus)
 
-| Jméno | Text      | Počet vykřičníků | Výstup             |
-|-------|-----------|-------------------|---------------------|
-| Petr  | (prázdné) | 3                 | `Ahoj, Petr!!!`     |
-| Eva   | `Čau`     | 1                 | `Čau, Eva!`         |
+| Jméno | Text      | Počet vykřičníků | Výstup          |
+|-------|-----------|------------------|-----------------|
+| Petr  | (prázdné) | 3                | `Ahoj, Petr!!!` |
+| Eva   | `Čau`     | 1                | `Čau, Eva!`     |
