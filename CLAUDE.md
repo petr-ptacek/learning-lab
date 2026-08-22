@@ -17,9 +17,11 @@ skutečné příklady k řešení, ne jen teorie.
         └── NN-nazev-ukolu/
             ├── README.md      # zadání úkolu
             ├── solution/
-            │   └── main.py    # prázdný stub, sem se píše řešení
+            │   ├── main.py    # prázdný stub, sem se píše řešení
+            │   └── bonus.py   # prázdný stub, jen pokud má cvičení bonus
             └── reference/     # jen u už vyřešených cvičení, viz níže
-                └── main.py    # moje (Claude) referenční řešení
+                ├── main.py    # moje (Claude) referenční řešení
+                └── bonus.py   # jen pokud má cvičení bonus
 
 projects/               # větší cvičné projekty, klidně napříč tématy
 _template/               # šablona pro založení nového tématu / konceptu
@@ -43,7 +45,8 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   okrajových (např. nula, záporné číslo, hraniční hodnota).
 - Zadání a řešení drž oddělené — řešení až do `solution/`, ať si úkol
   můžu nejdřív zkusit sám. Ke každému cvičení rovnou založ prázdný
-  `solution/main.py` stub, ať ho nemusím zakládat ručně.
+  `solution/main.py` stub, ať ho nemusím zakládat ručně. Pokud zadání má
+  sekci `## Bonus`, založ rovnou i prázdný `solution/bonus.py` stub.
 - Do `THEORY.md` a `RESOURCES.md` piš stručně a věcně (jsou to poznámky ke
   konkrétnímu konceptu, ne kniha), s odkazy na oficiální dokumentaci
   (preferuj oficiální docs před blogy).
@@ -63,9 +66,9 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   stejného zadání — idiomatický kód, jak bys to napsal ty, jen pro srovnání.
   `reference/` nikdy nezakládej dřív (u nevyřešeného cvičení), ať si úkol
   nejdřív vyřeším sám beze spoileru.
-- Pokud má cvičení bonus, který dává smysl řešit v samostatném souboru,
-  patří vedle `main.py` jako sesterský soubor `bonus.py` (`solution/bonus.py`,
-  a pak i `reference/bonus.py`) — ne do nové složky. Složku navíc zaveď jen
-  tehdy, když si to daný koncept opravdu vyžádá (typicky až
+- Bonus patří vždy do sesterského souboru `bonus.py` vedle `main.py`
+  (`solution/bonus.py`, a po dořešení i `reference/bonus.py`) — ne do
+  jednoho `main.py` s base řešením a ne do nové složky. Složku navíc zaveď
+  jen tehdy, když si to daný koncept opravdu vyžádá (typicky až
   `09-moduly-balicky`, kde se řeší `import` mezi vlastními moduly) — do
   té doby nepřipravuj strukturu na hypotetické budoucí případy.
