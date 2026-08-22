@@ -6,8 +6,8 @@ proměnné.
 ## Požadavky
 
 - Vytvoř čtyři proměnné s lambda výrazy, každá přijímá dva parametry
-  `a`, `b` a vrátí výsledek dané operace: `scitani`, `odcitani`,
-  `mnozeni`, `deleni`.
+  `a`, `b` a vrátí výsledek dané operace: `add`, `subtract`,
+  `multiply`, `divide`.
 - Napiš hlavní smyčku (`while True` + `break`) — menu, které se zeptá na
   operaci (`+`, `-`, `*`, `/`) a dvě čísla `a`, `b`.
 - Podle zvolené operace (`if`/`elif`, ne slovník) zavolej odpovídající
@@ -34,7 +34,7 @@ Výsledek: 7
 
 ## Bonus
 
-- Přidej pátou lambdu `mocnina = lambda a, b: a ** b` pro operaci `^`
+- Přidej pátou lambdu `power = lambda a, b: a ** b` pro operaci `^`
   (umocnění).
 
 ### Příklady vstup/výstup (bonus)

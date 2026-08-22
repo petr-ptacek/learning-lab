@@ -8,18 +8,19 @@ předat.
 - Napiš funkci s touto přesnou signaturou:
 
   ```python
-  def vypocitej_cenu(cena, /, sleva, *, mena="Kč"):
+  def calculate_price(price, /, discount, *, currency="Kč"):
       ...
   ```
 
-  - `cena` — jen poziční (nejde zapsat `cena=1000`)
-  - `sleva` — pozičně i podle jména
-  - `mena` — jen podle jména, s výchozí hodnotou `"Kč"`
-- Funkce vrátí cenu po slevě (`sleva` je procento, např. `20` znamená
+  - `price` — jen poziční (nejde zapsat `price=1000`)
+  - `discount` — pozičně i podle jména
+  - `currency` — jen podle jména, s výchozí hodnotou `"Kč"`
+- Funkce vrátí cenu po slevě (`discount` je procento, např. `20` znamená
   20 %) jako text ve tvaru `"{výsledná_cena} {měna}"`.
-- Načti `cena` a `sleva` pomocí `input()` a zavolej funkci aspoň dvěma
+- Načti cenu a slevu pomocí `input()` a zavolej funkci aspoň dvěma
   různými platnými způsoby (napiš oba do kódu, ať vidíš, že oba fungují) —
-  jednou bez `mena` (použije se výchozí `"Kč"`) a jednou s `mena="EUR"`.
+  jednou bez `currency` (použije se výchozí `"Kč"`) a jednou s
+  `currency="EUR"`.
 - Výstup např.:
 
 ```
@@ -38,7 +39,7 @@ Zadej slevu (%): 25
 
 ## Bonus
 
-- Přidej další keyword-only parametr `dph=0` (DPH v procentech), který
+- Přidej další keyword-only parametr `vat=0` (DPH v procentech), který
   se připočte k ceně **po slevě**.
 
 ### Příklady vstup/výstup (bonus)

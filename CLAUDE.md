@@ -54,7 +54,12 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   a k čemu / na čem to stavíš (viz `_template/NN-nazev-konceptu/THEORY.md`).
 - Nepřidávej abstrakce/tooling navíc (CI, linters, package manager configy),
   pokud o to výslovně nepožádám — je to učební repo, ne produkční projekt.
-- Odpovídej a piš obsah česky, kód a technické termíny normálně anglicky.
+- Odpovídej a piš obsah (prózu, zadání, `THEORY.md`/`RESOURCES.md`) česky,
+  ale **kód se píše vždy v angličtině** — jména funkcí, proměnných a
+  parametrů (i ta, která zadání v `README.md` předepisuje jako povinnou
+  signaturu) musí být anglicky, ne česky. Výjimka jsou textové hodnoty
+  určené jako výstup pro uživatele (např. `"Ahoj"` jako výchozí pozdrav) —
+  ty zůstávají česky, protože jsou to data/obsah, ne identifikátor.
 - Commit zprávy piš podle [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
 - **Při kontrole vlastního řešení cvičení nikdy neprozrazuj chybu ani opravu
   přímo.** Naváděj otázkami a nápovědami (co zkontrolovat, co si vypsat,

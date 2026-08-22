@@ -4,10 +4,8 @@ Napiš svou první vlastní funkci.
 
 ## Požadavky
 
-- Napiš funkci `obsah_obdelnika(a, b)`, která **vrátí** (`return`) obsah
-  obdélníku se stranami `a` a `b`.
-- Načti strany `a`, `b` pomocí `input()`, zavolej funkci a vypiš, co
-  vrátila.
+- Napiš funkci `rectangle_area(a, b)`, která **vrátí** (`return`) obsah obdélníku se stranami `a` a `b`.
+- Načti strany `a`, `b` pomocí `input()`, zavolej funkci a vypiš, co vrátila.
 - Výstup např.:
 
 ```
@@ -26,12 +24,11 @@ Obsah: 12
 
 ## Bonus
 
-- Napiš i druhou funkci `obvod_obdelnika(a, b)`, která vrátí obvod, a
-  vypiš i ten.
+- Napiš i druhou funkci `rectangle_perimeter(a, b)`, která vrátí obvod, a vypiš i ten.
 
 ### Příklady vstup/výstup (bonus)
 
-| a | b | Výstup                        |
-|---|---|-------------------------------|
-| 3 | 4 | `Obsah: 12, obvod: 14`        |
-| 5 | 5 | `Obsah: 25, obvod: 20`        |
+| a | b | Výstup                 |
+|---|---|------------------------|
+| 3 | 4 | `Obsah: 12, obvod: 14` |
+| 5 | 5 | `Obsah: 25, obvod: 20` |

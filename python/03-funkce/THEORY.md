@@ -13,10 +13,10 @@ je to jeden z nejdůležitějších konceptů vůbec.
 ## Definice funkce
 
 ```python
-def scitej(a, b):
+def add(a, b):
     return a + b
 
-vysledek = scitej(2, 3)  # 5
+result = add(2, 3)  # 5
 ```
 
 - `def` + jméno + `()` s parametry + `:`, tělo odsazené (stejně jako
@@ -29,11 +29,11 @@ vysledek = scitej(2, 3)  # 5
 ## Parametry s výchozí hodnotou
 
 ```python
-def pozdrav(jmeno, text="Ahoj"):
-    print(f"{text}, {jmeno}!")
+def greet(name, greeting="Ahoj"):
+    print(f"{greeting}, {name}!")
 
-pozdrav("Petr")             # Ahoj, Petr!
-pozdrav("Petr", "Zdravím")   # Zdravím, Petr!
+greet("Petr")             # Ahoj, Petr!
+greet("Petr", "Zdravím")   # Zdravím, Petr!
 ```
 
 ## Keyword argumenty
@@ -42,8 +42,8 @@ Argument lze při volání předat podle jména parametru — pak nezáleží na
 pořadí:
 
 ```python
-pozdrav(jmeno="Petr", text="Čau")
-pozdrav(text="Čau", jmeno="Petr")  # stejný výsledek
+greet(name="Petr", greeting="Čau")
+greet(greeting="Čau", name="Petr")  # stejný výsledek
 ```
 
 ## Oddělovače `/` a `*`
@@ -64,19 +64,19 @@ def f(a, b, /, c, d, *, e, g):
 Když dopředu nevíš, kolik argumentů přijde:
 
 ```python
-def secti_vse(*cisla):
+def sum_all(*numbers):
     total = 0
-    for cislo in cisla:
-        total += cislo
+    for number in numbers:
+        total += number
     return total
 
-secti_vse(1, 2, 3)  # 6
+sum_all(1, 2, 3)  # 6
 
-def vypis_udaje(**udaje):
-    for klic in udaje:
-        print(f"{klic}: {udaje[klic]}")
+def print_info(**info):
+    for key in info:
+        print(f"{key}: {info[key]}")
 
-vypis_udaje(jmeno="Petr", vek=30)
+print_info(name="Petr", age=30)
 ```
 
 `**kwargs` je uvnitř funkce dict (slovník) — podrobně se probere u
@@ -89,11 +89,11 @@ Proměnná definovaná uvnitř funkce je **lokální** — mimo funkci neexistuj
 do ní potřebuješ `global`:
 
 ```python
-pocet = 0
+count = 0
 
-def pripočti():
-    global pocet
-    pocet += 1
+def increment():
+    global count
+    count += 1
 ```
 
 ## Lambda výrazy
@@ -102,8 +102,8 @@ Anonymní (bezejmenná) jednořádková funkce — jen jeden výraz, žádný
 `return`, žádné víceřádkové tělo:
 
 ```python
-druha_mocnina = lambda x: x ** 2
-druha_mocnina(5)  # 25
+square = lambda x: x ** 2
+square(5)  # 25
 ```
 
 Hodí se pro krátké, jednorázové funkce — víc se to ukáže u `map`/`filter`/
@@ -116,8 +116,8 @@ kdy se přestane volat znovu — jinak poběží navždy (respektive do
 `RecursionError`):
 
 ```python
-def faktorial(n):
+def factorial(n):
     if n <= 1:
         return 1
-    return n * faktorial(n - 1)
+    return n * factorial(n - 1)
 ```

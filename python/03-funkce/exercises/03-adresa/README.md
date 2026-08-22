@@ -5,11 +5,11 @@ parametru, ne podle pořadí).
 
 ## Požadavky
 
-- Napiš funkci `format_adresa(ulice, cislo, mesto, psc)`, která vrátí
-  adresu naformátovanou jako `"{ulice} {cislo}, {psc} {mesto}"`.
+- Napiš funkci `format_address(street, number, city, zip_code)`, která
+  vrátí adresu naformátovanou jako `"{street} {number}, {zip_code} {city}"`.
 - Načti všechny čtyři údaje pomocí `input()`.
 - Zavolej funkci pomocí **keyword argumentů** a v **jiném pořadí**, než
-  jsou parametry definované (např. nejdřív `mesto=`, pak `ulice=`...) —
+  jsou parametry definované (např. nejdřív `city=`, pak `street=`...) —
   ukaž si, že na pořadí keyword argumentů nezáleží.
 - Vypiš, co funkce vrátila.
 - Výstup např.:
@@ -31,9 +31,9 @@ Hlavní 12, 11000 Praha
 
 ## Bonus
 
-- Přidej pátý, volitelný keyword parametr `cislo_orientacni=None`. Pokud
-  je zadané (není `None`), přidej ho do formátu za lomeno:
-  `"{ulice} {cislo}/{cislo_orientacni}, {psc} {mesto}"`.
+- Přidej pátý, volitelný keyword parametr `orientation_number=None`.
+  Pokud je zadaný (není `None`), přidej ho do formátu za lomeno:
+  `"{street} {number}/{orientation_number}, {zip_code} {city}"`.
 
 ### Příklady vstup/výstup (bonus)
 

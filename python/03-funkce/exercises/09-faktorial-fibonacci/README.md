@@ -4,8 +4,8 @@ Vyzkoušej si rekurzi — funkci, která volá sama sebe.
 
 ## Požadavky
 
-- Napiš rekurzivní funkci `faktorial(n)` — vrátí `n!` (`1` pro `n <= 1`,
-  jinak `n * faktorial(n - 1)`).
+- Napiš rekurzivní funkci `factorial(n)` — vrátí `n!` (`1` pro `n <= 1`,
+  jinak `n * factorial(n - 1)`).
 - Napiš rekurzivní funkci `fibonacci(n)` — vrátí n-tý člen Fibonacciho
   posloupnosti (`fibonacci(0) = 0`, `fibonacci(1) = 1`, jinak
   `fibonacci(n - 1) + fibonacci(n - 2)`).
@@ -29,7 +29,7 @@ fibonacci(5) = 5
 
 ## Bonus
 
-- Pomocí globální proměnné a `global` počítej, kolikrát se `faktorial`
+- Pomocí globální proměnné a `global` počítej, kolikrát se `factorial`
   za jedno spuštění rekurzivně zavolal (včetně prvního zavolání), a vypiš
   to.
 
