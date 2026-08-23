@@ -10,11 +10,10 @@ Vyzkoušej si rozsah platnosti proměnných (scope) a klíčové slovo
   o `amount`.
 - Napiš funkci `withdraw(amount)`, která pomocí `global` sníží `balance`
   o `amount`.
-- Napiš hlavní smyčku (`while True` + `break`, jako v minulém konceptu) —
-  menu s volbami:
-  - `p` — načti částku, zavolej `deposit`, vypiš aktuální `balance`
-  - `o` — načti částku, zavolej `withdraw`, vypiš aktuální `balance`
-  - `k` — vypiš konečný `balance` a `break`
+- Napiš hlavní smyčku (`while True` + `break`, jako v minulém konceptu) — menu s volbami:
+    - `p` — načti částku, zavolej `deposit`, vypiš aktuální `balance`
+    - `o` — načti částku, zavolej `withdraw`, vypiš aktuální `balance`
+    - `k` — vypiš konečný `balance` a `break`
 - Výstup např.:
 
 ```
@@ -27,10 +26,10 @@ Konec, zůstatek: 100
 
 ### Příklady vstup/výstup
 
-| Průběh (volby v pořadí)             | Výstup po každém kroku                          |
-|---------------------------------------|--------------------------------------------------|
-| `p 100`, `p 50`, `o 30`, `k`           | `100` → `150` → `120` → `Konec, zůstatek: 120`   |
-| `o 20`, `k`                            | `-20` → `Konec, zůstatek: -20`                   |
+| Průběh (volby v pořadí)      | Výstup po každém kroku                         |
+|------------------------------|------------------------------------------------|
+| `p 100`, `p 50`, `o 30`, `k` | `100` → `150` → `120` → `Konec, zůstatek: 120` |
+| `o 20`, `k`                  | `-20` → `Konec, zůstatek: -20`                 |
 
 ## Bonus
 
@@ -39,6 +38,6 @@ Konec, zůstatek: 100
 
 ### Příklady vstup/výstup (bonus)
 
-| Průběh (volby v pořadí)         | Výstup po posledním kroku |
-|-----------------------------------|-----------------------------|
-| `p 100`, `n`, `k`                  | `Zůstatek vynulován: 0` → `Konec, zůstatek: 0` |
+| Průběh (volby v pořadí) | Výstup po posledním kroku                      |
+|-------------------------|------------------------------------------------|
+| `p 100`, `n`, `k`       | `Zůstatek vynulován: 0` → `Konec, zůstatek: 0` |

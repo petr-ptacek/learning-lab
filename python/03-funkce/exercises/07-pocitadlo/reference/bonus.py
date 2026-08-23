@@ -16,24 +16,18 @@ def reset_balance():
     balance = 0
 
 
-def get_user_amount():
-    return float(input("Zadej castku: "))
-
-
 while True:
     choice = input("Zadej volbu (p/o/n/k): ")
 
     if choice == "p":
-        amount = get_user_amount()
-        deposit(amount)
-        print(f"Zustatek: {balance}")
+        deposit(float(input("Zadej částku: ")))
+        print(f"Zůstatek: {balance}")
     elif choice == "o":
-        amount = get_user_amount()
-        withdraw(amount)
-        print(f"Zustatek: {balance}")
+        withdraw(float(input("Zadej částku: ")))
+        print(f"Zůstatek: {balance}")
     elif choice == "n":
         reset_balance()
-        print(f"Zustatek: {balance}")
+        print(f"Zůstatek vynulován: {balance}")
     elif choice == "k":
-        print(f"Konec, zustatek: {balance}")
+        print(f"Konec, zůstatek: {balance}")
         break
