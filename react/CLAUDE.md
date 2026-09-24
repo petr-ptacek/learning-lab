@@ -25,9 +25,12 @@ Specifika tohoto tématu:
   a vlastního `bonus.html` (Vite bez dalšího configu servíruje víc HTML
   vstupních bodů zároveň) — spustí se stejným `npm run dev`, jen se otevře
   `/bonus.html` místo `/index.html`.
-- Uživatel (Petr) je zkušený Vue.js developer, React se učí od základů —
-  React koncepty klidně kontrastuj s Vue tam, kde to pomůže pochopení
-  (JSX vs. template, props, reaktivita, ...), ale nepředpokládej znalost
-  Reactu samotného.
+- Uživatel (Petr) je zkušený Vue.js developer (senior), React se učí od
+  základů — nepředpokládej znalost Reactu samotného, ale Vue znalost ano.
+  V `THEORY.md` u konceptů, kde existuje přímá obdoba ve Vue (komponenty,
+  props, children/sloty, reaktivita/state, lifecycle/efekty, ...), ukazuj
+  **konkrétní kód vedle sebe** — krátký Vue úryvek (SFC/`<script setup>`)
+  a jeho React ekvivalent, ne jen slovní zmínku "jako ve Vue". Cílem je
+  využít existující mentální model, ne ho jen připomenout.
 - Odkaz zpět na kořenový [`CLAUDE.md`](../CLAUDE.md) pro obecná pravidla
   repa.

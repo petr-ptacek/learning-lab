@@ -2,9 +2,8 @@
 
 ## Cíl
 
-Naučit se základní stavební blok Reactu — komponentu: co je JSX, jak napsat
-function komponentu, jak jí předat data přes props a jak komponenty skládat
-dohromady (kompozice). Všechno další (state, efekty, ...) na tomhle staví.
+Naučit se základní stavební blok Reactu — komponentu: co je JSX, jak napsat function komponentu, jak jí předat data přes
+props a jak komponenty skládat dohromady (kompozice). Všechno další (state, efekty, ...) na tomhle staví.
 
 ## Jak spustit cvičení
 
@@ -15,17 +14,27 @@ npm install
 npm run dev
 ```
 
-Vite vypíše URL (typicky `http://localhost:5173`), na které appka běží.
-Změny v kódu se promítnou automaticky (hot reload).
+Vite vypíše URL (typicky `http://localhost:5173`), na které appka běží. Změny v kódu se promítnou automaticky (hot
+reload).
 
 ## JSX
 
 JSX je syntaktické rozšíření JavaScriptu, které vypadá jako HTML, ale je to
 pořád JavaScript — pod kapotou se kompiluje na volání funkcí, které vytvoří
-strom objektů popisujících UI (podobně jako Vue template kompiluje na
-render funkce, jen tady je ta podobnost s JS syntaxí vidět přímo).
+strom objektů popisujících UI. Vue template dělá koncepčně to samé (taky se
+kompiluje na render funkce) — rozdíl je, že JSX tuhle podobnost s JS
+syntaxí nechává vidět přímo, zatímco Vue template je vlastní, oddělený
+jazyk (proto `v-if`, `v-for`, `{{ }}` místo obyčejného JS):
+
+```vue
+<!-- Vue -->
+<template>
+  <h1>Ahoj, světe!</h1>
+</template>
+```
 
 ```tsx
+// React
 const element = <h1>Ahoj, světe!</h1>
 ```
 
@@ -34,34 +43,45 @@ Rozdíly oproti HTML:
 - `className` místo `class` (`class` je v JS rezervované slovo)
 - atributy v `camelCase` (`onClick`, `tabIndex`, ...)
 - všechny tagy musí být uzavřené, i ty bez obsahu (`<img />`, ne `<img>`)
-- JSX výraz musí mít **jeden root element** — víc elementů vedle sebe se
-  zabalí do `<div>...</div>` nebo do fragmentu `<>...</>` (fragment nic
-  nepřidá do výsledného DOM)
+- JSX výraz musí mít **jeden root element** — víc elementů vedle sebe se zabalí do `<div>...</div>` nebo do fragmentu
+  `<>...</>` (fragment nic nepřidá do výsledného DOM)
 
 ## JavaScript uvnitř JSX
 
-Uvnitř `{}` můžeš do JSX vložit libovolný JS **výraz** (ne příkaz — takže
-ne `if`, `for`; na podmíněné renderování a seznamy dojde v příštím
-konceptu).
+Uvnitř `{}` můžeš do JSX vložit libovolný JS **výraz** (ne příkaz — takže ne `if`, `for`; na podmíněné renderování a
+seznamy dojde v příštím konceptu).
 
 ```tsx
 const name = 'Petr'
-const element = <p>Ahoj, {name}! Dnes je {new Date().toLocaleDateString()}.</p>
+const element = <p>Ahoj, { name }! Dnes je { new Date().toLocaleDateString() }.</p>
 ```
 
 ## Function komponenty
 
-Komponenta je obyčejná JS funkce, která vrací JSX. Jméno komponenty musí
-začínat velkým písmenem (`PascalCase`) — tím React pozná komponentu od
-obyčejného HTML tagu (`<Profile />` vs. `<profile />`).
+Komponenta je obyčejná JS funkce, která vrací JSX. Jméno komponenty musí začínat velkým písmenem (`PascalCase`) — tím
+React pozná komponentu od obyčejného HTML tagu (`<Profile />` vs. `<profile />`).
+
+Ve Vue je komponenta soubor (`.vue` SFC), tady je to funkce ve stejném
+`.tsx` souboru — klidně jich může být v jednom souboru víc, dokud jde o
+malé, úzce související komponenty (žádné pravidlo "1 komponenta = 1 soubor"
+jako u Vue SFC).
+
+```vue
+<!-- Vue: Greeting.vue -->
+<template>
+  <h1>Ahoj!</h1>
+</template>
+```
 
 ```tsx
+// React
 function Greeting() {
   return <h1>Ahoj!</h1>
 }
 ```
 
-Použití komponenty vypadá jako vlastní HTML tag:
+Použití komponenty vypadá jako vlastní HTML tag — stejně jako ve Vue
+(automaticky, nebo přes `components: { Greeting }` u Options API):
 
 ```tsx
 function App() {
@@ -71,20 +91,36 @@ function App() {
 
 ## Props
 
-Props jsou vstupní data komponenty — předávají se jako atributy, uvnitř
-komponenty je dostaneš jako jeden objekt (argument funkce), typicky rovnou
-destrukturovaný. Props jsou **read-only** — komponenta je nesmí měnit.
+Props jsou vstupní data komponenty — předávají se jako atributy, uvnitř komponenty je dostaneš jako jeden objekt
+(argument funkce), typicky rovnou destrukturovaný. Props jsou **read-only** — komponenta je nesmí měnit.
 
-Typ props se popíše přes `interface` (nebo `type`) a napíše se za
-destrukturovaný parametr:
+Typ props se popíše přes `interface` (nebo `type`) a napíše se za destrukturovaný parametr — koncepčně přesně to samé
+jako typované `defineProps<Props>()` ve Vue `<script setup>`, jen bez speciální syntaxe navíc (je to obyčejný TS typ
+parametru funkce):
+
+```vue
+<!-- Vue: Greeting.vue -->
+<script setup lang="ts">
+interface Props {
+  name: string
+}
+
+const { name } = defineProps<Props>()
+</script>
+
+<template>
+  <h1>Ahoj, {{ name }}!</h1>
+</template>
+```
 
 ```tsx
+// React
 interface GreetingProps {
   name: string
 }
 
 function Greeting({ name }: GreetingProps) {
-  return <h1>Ahoj, {name}!</h1>
+  return <h1>Ahoj, { name }!</h1>
 }
 
 function App() {
@@ -92,23 +128,34 @@ function App() {
 }
 ```
 
-Ve Vue je to koncepčně to samé jako typované `defineProps<Props>()` —
-akorát v Reactu je typ prostě běžný TS typ parametru funkce, žádná
-speciální syntax navíc.
-
 ## Children a kompozice
 
-Obsah mezi otevíracím a zavíracím tagem komponenty je dostupný uvnitř jako
-speciální prop `children`, typovaný jako `React.ReactNode` (cokoliv, co
-React umí vykreslit — JSX, string, číslo, pole těchto věcí, ...):
+Obsah mezi otevíracím a zavíracím tagem komponenty je dostupný uvnitř jako speciální prop `children`, typovaný jako
+`React.ReactNode` (cokoliv, co React umí vykreslit — JSX, string, číslo, pole těchto věcí, ...). Je to přímá obdoba
+Vue defaultního slotu (`<slot />`) — jen ve Vue je slot deklarovaný v template, v Reactu je `children` obyčejný prop:
+
+```vue
+<!-- Vue: Card.vue -->
+<template>
+  <div class="card">
+    <slot />
+  </div>
+</template>
+
+<!-- použití -->
+<Card>
+  <p>Tohle je obsah karty.</p>
+</Card>
+```
 
 ```tsx
+// React
 interface CardProps {
   children: React.ReactNode
 }
 
 function Card({ children }: CardProps) {
-  return <div className="card">{children}</div>
+  return <div className="card">{ children }</div>
 }
 
 function App() {
@@ -120,15 +167,14 @@ function App() {
 }
 ```
 
-To je obdoba Vue slotů (`<slot />`). React nemá dědičnost komponent — místo
-toho se preferuje **kompozice**: skládání menších komponent do větších,
-podobně jako v Reactu chybí koncept "extends komponenty" a řeší se to
-vnořováním a `children` (nebo props, které jsou samy JSX).
+React nemá dědičnost komponent — místo toho se preferuje **kompozice**: skládání menších komponent do větších, stejně
+jako ve Vue neexistuje "extends komponenty" a řeší se to vnořováním a sloty (nebo v Reactu `children`/props, které jsou
+samy JSX). Pojmenované Vue sloty (`<slot name="...">`) nemají v Reactu přímý ekvivalent — místo nich se prostě předá
+víc props, které jsou samy JSX (např. `<Card header={<h2>Nadpis</h2>}>`).
 
 ## Klíčové pojmy
 
-- JSX — syntax rozšíření JS, kompiluje se na volání funkcí vytvářejících
-  popis UI
+- JSX — syntax rozšíření JS, kompiluje se na volání funkcí vytvářejících popis UI
 - function komponenta — funkce v `PascalCase`, vrací JSX
 - props — vstupní, read-only data komponenty, typovaná přes `interface`/`type`
 - `children` — speciální prop pro obsah mezi tagy komponenty, typ `React.ReactNode`
