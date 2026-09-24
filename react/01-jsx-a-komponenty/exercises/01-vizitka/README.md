@@ -18,11 +18,11 @@ petr@example.com
 
 ### Příklady props → vykreslený obsah
 
-| name          | role                | email                  | Vykreslený obsah                                   |
-|---------------|---------------------|------------------------|-----------------------------------------------------|
-| Petr Ptáček   | Frontend Developer  | petr@example.com       | `Petr Ptáček` / `Frontend Developer` / `petr@example.com` |
-| Jana Nováková | UX Designer         | jana.novakova@firma.cz | `Jana Nováková` / `UX Designer` / `jana.novakova@firma.cz` |
-| Karel Svoboda | Backend Developer   | karel@svoboda.dev      | `Karel Svoboda` / `Backend Developer` / `karel@svoboda.dev` |
+| name          | role               | email                  | Vykreslený obsah                                            |
+|---------------|--------------------|------------------------|-------------------------------------------------------------|
+| Petr Ptáček   | Frontend Developer | petr@example.com       | `Petr Ptáček` / `Frontend Developer` / `petr@example.com`   |
+| Jana Nováková | UX Designer        | jana.novakova@firma.cz | `Jana Nováková` / `UX Designer` / `jana.novakova@firma.cz`  |
+| Karel Svoboda | Backend Developer  | karel@svoboda.dev      | `Karel Svoboda` / `Backend Developer` / `karel@svoboda.dev` |
 
 ## Bonus
 
