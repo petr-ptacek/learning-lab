@@ -167,6 +167,32 @@ function App() {
 }
 ```
 
+`children` je rezervované jméno propu ve dvou konkrétních věcech:
+
+- **automatické plnění** — cokoliv napíšeš mezi `<Tag>...</Tag>`, JSX transformace automaticky předá jako
+  `props.children`, aniž bys psal `children={...}` explicitně; přejmenovat to nejde
+- pokud `children` v typu props nemáš deklarovaný, TypeScript ti nedovolí do komponenty nic vnořit — je to jediné
+  jméno propu, které JSX/TS takhle speciálně zachytává
+
+Co rezervované **není**, je typ. `React.ReactNode` je jen konvenční výchozí volba (obvykle chceš přijmout "cokoliv
+renderovatelného"), ne vynucený typ — klidně ho zúžíš, přesně jako u kteréhokoli jiného propu:
+
+```tsx
+interface CounterProps {
+  children: number
+}
+
+function Counter({ children }: CounterProps) {
+  return <div>Count: {children}</div>
+}
+
+// <Counter>{42}</Counter>          — OK
+// <Counter>not a number</Counter>  — chyba: typ 'children' je 'number', ne 'string'
+```
+
+Jméno a mechanismus plnění = rezervované/speciální (1:1 obdoba Vue defaultního slotu). Typ = obyčejný TS typ jako
+u jakéhokoli jiného propu.
+
 React nemá dědičnost komponent — místo toho se preferuje **kompozice**: skládání menších komponent do větších, stejně
 jako ve Vue neexistuje "extends komponenty" a řeší se to vnořováním a sloty (nebo v Reactu `children`/props, které jsou
 samy JSX).
