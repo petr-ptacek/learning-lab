@@ -169,8 +169,53 @@ function App() {
 
 React nemá dědičnost komponent — místo toho se preferuje **kompozice**: skládání menších komponent do větších, stejně
 jako ve Vue neexistuje "extends komponenty" a řeší se to vnořováním a sloty (nebo v Reactu `children`/props, které jsou
-samy JSX). Pojmenované Vue sloty (`<slot name="...">`) nemají v Reactu přímý ekvivalent — místo nich se prostě předá
-víc props, které jsou samy JSX (např. `<Card header={<h2>Nadpis</h2>}>`).
+samy JSX).
+
+Pojmenované Vue sloty (`<slot name="...">`) nemají v Reactu speciální syntax — použije se prostě další pojmenovaný
+prop typu `React.ReactNode` (`children` je tak trochu "výchozí slot", jen zabudovaný do jazyka):
+
+```vue
+<!-- Vue: Card.vue -->
+<template>
+  <div class="card">
+    <header><slot name="header" /></header>
+    <div class="body"><slot /></div>
+  </div>
+</template>
+
+<!-- použití -->
+<Card>
+  <template #header>
+    <h2>Nadpis</h2>
+  </template>
+  <p>Obsah karty</p>
+</Card>
+```
+
+```tsx
+// React
+interface CardProps {
+  header: React.ReactNode
+  children: React.ReactNode
+}
+
+function Card({ header, children }: CardProps) {
+  return (
+    <div className="card">
+      <header>{header}</header>
+      <div className="body">{children}</div>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <Card header={<h2>Nadpis</h2>}>
+      <p>Obsah karty</p>
+    </Card>
+  )
+}
+```
 
 ## Klíčové pojmy
 
