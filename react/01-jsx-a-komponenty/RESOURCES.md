@@ -8,3 +8,4 @@
 - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
 - [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
 - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+- [TypeScript — React docs](https://react.dev/learn/typescript) — typování komponent a props

@@ -25,7 +25,7 @@ pořád JavaScript — pod kapotou se kompiluje na volání funkcí, které vytv
 strom objektů popisujících UI (podobně jako Vue template kompiluje na
 render funkce, jen tady je ta podobnost s JS syntaxí vidět přímo).
 
-```jsx
+```tsx
 const element = <h1>Ahoj, světe!</h1>
 ```
 
@@ -44,7 +44,7 @@ Uvnitř `{}` můžeš do JSX vložit libovolný JS **výraz** (ne příkaz — t
 ne `if`, `for`; na podmíněné renderování a seznamy dojde v příštím
 konceptu).
 
-```jsx
+```tsx
 const name = 'Petr'
 const element = <p>Ahoj, {name}! Dnes je {new Date().toLocaleDateString()}.</p>
 ```
@@ -55,7 +55,7 @@ Komponenta je obyčejná JS funkce, která vrací JSX. Jméno komponenty musí
 začínat velkým písmenem (`PascalCase`) — tím React pozná komponentu od
 obyčejného HTML tagu (`<Profile />` vs. `<profile />`).
 
-```jsx
+```tsx
 function Greeting() {
   return <h1>Ahoj!</h1>
 }
@@ -63,7 +63,7 @@ function Greeting() {
 
 Použití komponenty vypadá jako vlastní HTML tag:
 
-```jsx
+```tsx
 function App() {
   return <Greeting />
 }
@@ -75,8 +75,15 @@ Props jsou vstupní data komponenty — předávají se jako atributy, uvnitř
 komponenty je dostaneš jako jeden objekt (argument funkce), typicky rovnou
 destrukturovaný. Props jsou **read-only** — komponenta je nesmí měnit.
 
-```jsx
-function Greeting({ name }) {
+Typ props se popíše přes `interface` (nebo `type`) a napíše se za
+destrukturovaný parametr:
+
+```tsx
+interface GreetingProps {
+  name: string
+}
+
+function Greeting({ name }: GreetingProps) {
   return <h1>Ahoj, {name}!</h1>
 }
 
@@ -85,18 +92,22 @@ function App() {
 }
 ```
 
-Ve Vue je to koncepčně to samé (`defineProps`), jen bez automatické
-validace typů — pokud chceš validaci props, musí to být TypeScript nebo
-knihovna navíc (např. `prop-types`). V tomhle repu props zatím necháváme
-bez validace.
+Ve Vue je to koncepčně to samé jako typované `defineProps<Props>()` —
+akorát v Reactu je typ prostě běžný TS typ parametru funkce, žádná
+speciální syntax navíc.
 
 ## Children a kompozice
 
 Obsah mezi otevíracím a zavíracím tagem komponenty je dostupný uvnitř jako
-speciální prop `children`:
+speciální prop `children`, typovaný jako `React.ReactNode` (cokoliv, co
+React umí vykreslit — JSX, string, číslo, pole těchto věcí, ...):
 
-```jsx
-function Card({ children }) {
+```tsx
+interface CardProps {
+  children: React.ReactNode
+}
+
+function Card({ children }: CardProps) {
   return <div className="card">{children}</div>
 }
 
@@ -119,6 +130,6 @@ vnořováním a `children` (nebo props, které jsou samy JSX).
 - JSX — syntax rozšíření JS, kompiluje se na volání funkcí vytvářejících
   popis UI
 - function komponenta — funkce v `PascalCase`, vrací JSX
-- props — vstupní, read-only data komponenty
-- `children` — speciální prop pro obsah mezi tagy komponenty
+- props — vstupní, read-only data komponenty, typovaná přes `interface`/`type`
+- `children` — speciální prop pro obsah mezi tagy komponenty, typ `React.ReactNode`
 - kompozice — skládání komponent vnořováním místo dědičnosti

@@ -5,7 +5,7 @@ Napiš svou první React komponentu.
 ## Požadavky
 
 - Napiš function komponentu `ProfileCard`, která přijme props `name`, `role`
-  a `email` a vykreslí je do JSX.
+  a `email` a vykreslí je do JSX. Typ props popiš přes `interface`.
 - V `App` vykresli `ProfileCard` s konkrétními hodnotami (props napevno v kódu).
 - Vykreslený obsah např. pro `name="Petr Ptáček"`, `role="Frontend Developer"`,
   `email="petr@example.com"`:
