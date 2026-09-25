@@ -4,10 +4,8 @@ První `useEffect` — načtení dat z reálného API při vykreslení komponent
 
 ## Požadavky
 
-- Napiš komponentu `UserList`, která při vykreslení (`useEffect` s
-  prázdným dependency polem) načte uživatele z
-  `https://jsonplaceholder.typicode.com/users` (veřejné testovací API,
-  žádný klíč není potřeba).
+- Napiš komponentu `UserList`, která při vykreslení (`useEffect` s prázdným dependency polem) načte uživatele z
+  `https://jsonplaceholder.typicode.com/users` (veřejné testovací API, žádný klíč není potřeba).
 - Drž si tři stavy: `users` (pole, zpočátku `[]`), `loading` (zpočátku
   `true`), `error` (zpočátku `null`).
 - Dokud se načítá, zobraz `Načítám...`.
@@ -18,17 +16,15 @@ První `useEffect` — načtení dat z reálného API při vykreslení komponent
 
 ### Příklady stavů → vykreslený obsah
 
-| Stav                                   | Vykreslený obsah                          |
-|-------------------------------------------|----------------------------------------------|
-| právě se načítá                            | `Načítám...`                                 |
-| fetch selhal (např. vypnutý internet)      | `Chyba: ...` (konkrétní zpráva podle chyby)  |
-| úspěšně načteno (API vrací 10 uživatelů)   | seznam 10 jmen                               |
+| Stav                                     | Vykreslený obsah                            |
+|------------------------------------------|---------------------------------------------|
+| právě se načítá                          | `Načítám...`                                |
+| fetch selhal (např. vypnutý internet)    | `Chyba: ...` (konkrétní zpráva podle chyby) |
+| úspěšně načteno (API vrací 10 uživatelů) | seznam 10 jmen                              |
 
 ## Bonus
 
-- Přidej tlačítko `Znovu načíst`, které zopakuje fetch (bez reloadu celé
-  stránky). Fetch logiku vytáhni do samostatné funkce, kterou zavolá jak
-  `useEffect` při mountu, tak handler tlačítka — ať kód není duplicitně
-  na dvou místech.
-- Po kliknutí na `Znovu načíst` se má appka znovu na chvíli dostat do
-  stavu `Načítám...`.
+- Přidej tlačítko `Znovu načíst`, které zopakuje fetch (bez reloadu celé stránky). Fetch logiku vytáhni do samostatné
+  funkce, kterou zavolá jak
+  `useEffect` při mountu, tak handler tlačítka — ať kód není duplicitně na dvou místech.
+- Po kliknutí na `Znovu načíst` se má appka znovu na chvíli dostat do stavu `Načítám...`.
