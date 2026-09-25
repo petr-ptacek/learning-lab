@@ -3,7 +3,7 @@
 Plán konceptů v doporučeném pořadí. Zaškrtnuto = koncept zvládnutý (teorie
 prostudovaná + cvičení vyřešená), ne jen založený.
 
-- [ ] 01-jsx-a-komponenty — JSX, function komponenty, props, children,
+- [x] 01-jsx-a-komponenty — JSX, function komponenty, props, children,
       kompozice komponent
 - [ ] 02-podmineny-render-a-seznamy — podmíněné renderování, `.map()` přes
       seznamy, `key`, fragmenty (staví na 01-jsx-a-komponenty)
