@@ -7,7 +7,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
       kompozice komponent
 - [x] 02-podmineny-render-a-seznamy — podmíněné renderování, `.map()` přes
       seznamy, `key`, fragmenty (staví na 01-jsx-a-komponenty)
-- [ ] 03-state-a-udalosti — `useState`, event handlery, controlled formuláře
+- [x] 03-state-a-udalosti — `useState`, event handlery, controlled formuláře
 - [ ] 04-efekty-a-data-fetching — `useEffect`, side effects, fetch z API,
       cleanup, dependency pole (staví na 03-state-a-udalosti)
 - [ ] 05-refs-a-dom — `useRef`, imperativní přístup k DOM, `forwardRef`
