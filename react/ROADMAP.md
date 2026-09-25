@@ -5,7 +5,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 
 - [x] 01-jsx-a-komponenty — JSX, function komponenty, props, children,
       kompozice komponent
-- [ ] 02-podmineny-render-a-seznamy — podmíněné renderování, `.map()` přes
+- [x] 02-podmineny-render-a-seznamy — podmíněné renderování, `.map()` přes
       seznamy, `key`, fragmenty (staví na 01-jsx-a-komponenty)
 - [ ] 03-state-a-udalosti — `useState`, event handlery, controlled formuláře
 - [ ] 04-efekty-a-data-fetching — `useEffect`, side effects, fetch z API,
