@@ -1,9 +1,8 @@
 # 02 — Správa úkolů
 
 Těžší cvičení — spoj `useState`, controlled input a všechno z
-`02-podmineny-render-a-seznamy` (`.map()`, `key`, podmíněný render) do
-jedné interaktivní komponenty. Přidávání a mazání úkolů, ne jen jejich
-zobrazení.
+`02-podmineny-render-a-seznamy` (`.map()`, `key`, podmíněný render) do jedné interaktivní komponenty. Přidávání a mazání
+úkolů, ne jen jejich zobrazení.
 
 ## Požadavky
 
@@ -11,11 +10,10 @@ zobrazení.
 - Napiš komponentu `TaskManager`, která si přes `useState` drží pole
   `tasks: Task[]` (počáteční hodnota `[]`).
 - Přidej controlled text input a tlačítko `Přidat`:
-  - po kliknutí přidá do seznamu nový úkol s `title` z inputu (`done: false`,
-    vygeneruj unikátní `id`, např. `crypto.randomUUID()`)
-  - po přidání se input vyprázdní
-  - použij immutabilní update (viz `THEORY.md` — `03-state-a-udalosti`),
-    ne mutaci pole
+    - po kliknutí přidá do seznamu nový úkol s `title` z inputu (`done: false`, vygeneruj unikátní `id`, např.
+      `crypto.randomUUID()`)
+    - po přidání se input vyprázdní
+    - použij immutabilní update (viz `THEORY.md` — `03-state-a-udalosti`), ne mutaci pole
 - Ke každému úkolu přidej tlačítko `Hotovo`/`Vrátit`, kterým přepneš jeho
   `done` (bez mutace objektu úkolu).
 - Ke každému úkolu přidej tlačítko `Smazat`, kterým ho ze seznamu odstraníš.
@@ -25,14 +23,14 @@ zobrazení.
 
 ### Příklady akcí → zobrazený seznam
 
-| Akce (v pořadí)                                                  | Zobrazený seznam           |
-|--------------------------------------------------------------------|-------------------------------|
-| (start)                                                             | `Žádné úkoly.`               |
-| napiš "Nakoupit", klik `Přidat`                                     | `Nakoupit`                   |
-| napiš "Uklidit", klik `Přidat`                                      | `Nakoupit` / `Uklidit`        |
-| klik `Hotovo` u "Nakoupit"                                          | `✓ Nakoupit` / `Uklidit`      |
-| klik `Smazat` u "Uklidit"                                           | `✓ Nakoupit`                 |
-| klik `Smazat` u "Nakoupit"                                          | `Žádné úkoly.`                |
+| Akce (v pořadí)                 | Zobrazený seznam          |
+|---------------------------------|---------------------------|
+| (start)                         | `Žádné úkoly.`            |
+| napiš "Nakoupit", klik `Přidat` | `Nakoupit`                |
+| napiš "Uklidit", klik `Přidat`  | `Nakoupit` / `Uklidit`    |
+| klik `Hotovo` u "Nakoupit"      | `✓ Nakoupit` / `Uklidit` |
+| klik `Smazat` u "Uklidit"       | `✓ Nakoupit`             |
+| klik `Smazat` u "Nakoupit"      | `Žádné úkoly.`            |
 
 ## Bonus
 
@@ -42,8 +40,8 @@ zobrazení.
 
 ### Příklady akcí → zobrazený seznam (bonus)
 
-| Akce (v pořadí)                                  | Zobrazený seznam |
-|-----------------------------------------------------|---------------------|
-| input necháš prázdný, klik `Přidat`                  | `Žádné úkoly.`      |
-| napiš jen mezery `"   "`, klik `Přidat`              | `Žádné úkoly.`      |
-| napiš `"  Nakoupit  "`, klik `Přidat`                | `Nakoupit`          |
+| Akce (v pořadí)                         | Zobrazený seznam |
+|-----------------------------------------|------------------|
+| input necháš prázdný, klik `Přidat`     | `Žádné úkoly.`   |
+| napiš jen mezery `"   "`, klik `Přidat` | `Žádné úkoly.`   |
+| napiš `"  Nakoupit  "`, klik `Přidat`   | `Nakoupit`       |
