@@ -5,7 +5,8 @@ export function CounterWithStep() {
   const [step, setStep] = useState(1)
 
   function handleStepChange(e: ChangeEvent<HTMLInputElement>) {
-    setStep(e.target.valueAsNumber)
+    const value = e.target.valueAsNumber
+    setStep(Number.isNaN(value) ? 0 : value)
   }
 
   return (
