@@ -60,7 +60,9 @@ exercises/NN-nazev-ukolu/
   app zaregistrovaná v `INSTALLED_APPS`, `urls.py` napojené). Soubory,
   kam se píše řešení, jsou prázdné stuby — co přesně implementovat, říká
   `README.md`. `pyproject.toml` je bez build-systemu (není to balíček,
-  jen aplikace).
+  jen aplikace). Výjimka: `01-projekt-a-request-cyklus/exercises/01-prvni-projekt`,
+  kde je založení projektu přes uv součástí zadání (`solution/` obsahuje
+  jen `.gitkeep`).
 - **Ruff** (výslovně vyžádaný, výjimka z obecného pravidla „žádný
   tooling navíc“) je v každém cvičení jako dev závislost
   (`uv add --dev ruff`) s konfigurací v `pyproject.toml`, viz
