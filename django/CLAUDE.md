@@ -31,7 +31,9 @@ npm: `pyproject.toml` ≈ `package.json`, `uv.lock` ≈ `package-lock.json`,
 [`UV.md`](docs/UV.md), linter/formatter v [`RUFF.md`](docs/RUFF.md), struktura
 Django projektu v
 [`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md), CSRF v
-[`CSRF.md`](docs/CSRF.md) — v `THEORY.md` na ně odkazuj místo opakování.
+[`CSRF.md`](docs/CSRF.md), `DEBUG` a `ALLOWED_HOSTS` v
+[`DEBUG_AND_ALLOWED_HOSTS.md`](docs/DEBUG_AND_ALLOWED_HOSTS.md) — v
+`THEORY.md` na ně odkazuj místo opakování.
 Průřezová témata, která nepatří k jednomu konceptu, patří do `docs/`.
 
 ## Struktura cvičení

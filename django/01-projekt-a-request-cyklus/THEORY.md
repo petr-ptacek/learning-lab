@@ -142,7 +142,8 @@ i výchozí hodnoty pro nastavení, která v souboru nemáš (např.
 `DEBUG = True` (výchozí po `startproject`) zapne podrobné chybové stránky:
 u 404 vypíše všechny zkoušené routy, u 500 celý traceback s proměnnými.
 Pro vývoj ideální. V produkci musí být `False`, jinak prozradíš kód i
-nastavení.
+nastavení. Proč přesně a jak s tím souvisí `ALLOWED_HOSTS`, je v
+[`../docs/DEBUG_AND_ALLOWED_HOSTS.md`](../docs/DEBUG_AND_ALLOWED_HOSTS.md).
 
 ## `manage.py`
 
