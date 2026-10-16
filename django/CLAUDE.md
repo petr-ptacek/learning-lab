@@ -32,7 +32,8 @@ npm: `pyproject.toml` ≈ `package.json`, `uv.lock` ≈ `package-lock.json`,
 Django projektu v
 [`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md), CSRF v
 [`CSRF.md`](docs/CSRF.md), `DEBUG` a `ALLOWED_HOSTS` v
-[`DEBUG_AND_ALLOWED_HOSTS.md`](docs/DEBUG_AND_ALLOWED_HOSTS.md) — v
+[`DEBUG_AND_ALLOWED_HOSTS.md`](docs/DEBUG_AND_ALLOWED_HOSTS.md), práce s
+časem v [`TIME_AND_TIMEZONES.md`](docs/TIME_AND_TIMEZONES.md) — v
 `THEORY.md` na ně odkazuj místo opakování.
 Průřezová témata, která nepatří k jednomu konceptu, patří do `docs/`.
 
