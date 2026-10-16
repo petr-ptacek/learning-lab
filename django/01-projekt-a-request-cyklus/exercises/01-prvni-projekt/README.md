@@ -8,15 +8,15 @@ projektech dělat znovu a znovu.
 ## Část 1 — Založení projektu
 
 Všechno v `solution/` (je v ní jen prázdný `.gitkeep`, aby složka šla
-commitnout). Příkazy najdeš v [`UV.md`](../../../UV.md) a
-[`RUFF.md`](../../../RUFF.md).
+commitnout). Příkazy najdeš v [`UV.md`](../../../docs/UV.md) a
+[`RUFF.md`](../../../docs/RUFF.md).
 
 - Založ uv projekt bez ukázkových souborů a připni Python 3.14.
 - Přidej `django` jako závislost a `ruff` jako dev závislost.
 - Do `pyproject.toml` přidej konfiguraci Ruffu z `RUFF.md`.
 - Vytvoř Django projekt s konfigurační složkou `config` **přímo do
   `solution/`** (pozor na tečku na konci příkazu, viz
-  [`PROJECT_STRUCTURE.md`](../../../PROJECT_STRUCTURE.md)).
+  [`PROJECT_STRUCTURE.md`](../../../docs/PROJECT_STRUCTURE.md)).
 - Vytvoř appku `pages` a zaregistruj ji v `INSTALLED_APPS`.
 - Spusť migrace a dev server a ověř, že na `http://127.0.0.1:8000/` vidíš
   uvítací stránku Djanga s raketou.

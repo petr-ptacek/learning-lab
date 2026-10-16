@@ -28,10 +28,11 @@ podle jména — u prvních cvičení stručně připomínej příkazy (analogie
 npm: `pyproject.toml` ≈ `package.json`, `uv.lock` ≈ `package-lock.json`,
 `.venv/` ≈ `node_modules/`, `uv sync` ≈ `npm install`, `uv add` ≈
 `npm install <pkg>`, `uv run` ≈ `npx` / `npm run`). Úvod a přehled příkazů je v
-[`UV.md`](UV.md), linter/formatter v [`RUFF.md`](RUFF.md), struktura
+[`UV.md`](docs/UV.md), linter/formatter v [`RUFF.md`](docs/RUFF.md), struktura
 Django projektu v
-[`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) — v `THEORY.md` na ně
-odkazuj místo opakování.
+[`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md), CSRF v
+[`CSRF.md`](docs/CSRF.md) — v `THEORY.md` na ně odkazuj místo opakování.
+Průřezová témata, která nepatří k jednomu konceptu, patří do `docs/`.
 
 ## Struktura cvičení
 
@@ -66,7 +67,7 @@ exercises/NN-nazev-ukolu/
 - **Ruff** (výslovně vyžádaný, výjimka z obecného pravidla „žádný
   tooling navíc“) je v každém cvičení jako dev závislost
   (`uv add --dev ruff`) s konfigurací v `pyproject.toml`, viz
-  [`RUFF.md`](RUFF.md). Scaffold i `reference/` musí projít
+  [`RUFF.md`](docs/RUFF.md). Scaffold i `reference/` musí projít
   `uv run ruff format --check .` a `uv run ruff check .`. Při kontrole
   řešení upozorni na Ruff chyby stejně jako na ostatní, tedy návodnými
   otázkami. Kód pravidla (např. `DJ008`) jde prozradit, protože ho vypíše

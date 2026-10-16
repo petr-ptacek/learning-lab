@@ -1,7 +1,7 @@
 # Struktura Django projektu
 
 Referenční přehled: co je který soubor, jak spolu souvisí a kde co hledat.
-Do hloubky jednotlivé části rozebírají koncepty v [`ROADMAP.md`](ROADMAP.md).
+Do hloubky jednotlivé části rozebírají koncepty v [`ROADMAP.md`](../ROADMAP.md).
 
 ## Projekt vs. app
 

@@ -13,8 +13,8 @@ kdy odejde response, a umět založit funkční projekt od nuly. Naučíš se:
 Na tomhle stojí všechno další v roadmapě. Modely, DRF i middleware jsou
 jen další vrstvy kolem stejného cyklu.
 
-Struktura souborů je popsaná v [`../PROJECT_STRUCTURE.md`](../PROJECT_STRUCTURE.md),
-nástroje v [`../UV.md`](../UV.md) a [`../RUFF.md`](../RUFF.md). Tady se
+Struktura souborů je popsaná v [`../docs/PROJECT_STRUCTURE.md`](../docs/PROJECT_STRUCTURE.md),
+nástroje v [`../docs/UV.md`](../docs/UV.md) a [`../docs/RUFF.md`](../docs/RUFF.md). Tady se
 neopakují.
 
 ## Jak spustit cvičení
@@ -207,8 +207,9 @@ curl -i -X POST http://127.0.0.1:8000/api/health/
 ```
 
 Tvoje `health` view se vůbec nezavolalo. Request zastavil
-`CsrfViewMiddleware`, protože POST nemá CSRF token. Proč to tak je a jak
-se to u API řeší, přijde v konceptech 10, 11 a 14. Teď stačí vědět, že
+`CsrfViewMiddleware`, protože POST nemá CSRF token. Co je CSRF, proč
+ho Django kontroluje a jak to řeší FE, je v [`../docs/CSRF.md`](../docs/CSRF.md).
+Do hloubky se k tomu vrátí koncepty 10, 11 a 14. Teď stačí vědět, že
 mezi `curl` a tvou funkcí něco je.
 
 ## Projekt vs. app — kdy appku registrovat
