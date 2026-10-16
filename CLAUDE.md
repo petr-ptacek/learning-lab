@@ -10,6 +10,7 @@ skutečné příklady k řešení, ne jen teorie.
 <téma>/                        # např. vue, react, python, django
 ├── CLAUDE.md                  # specifika daného tématu (verze, styl, konvence)
 ├── ROADMAP.md                 # plánované koncepty v pořadí + stav (zvládnuto/ne)
+├── docs/                      # průřezová vysvětlení (TÉMA.md), viz níže
 └── NN-nazev-konceptu/         # jeden koncept = jedna složka
     ├── THEORY.md              # stručné shrnutí konceptu
     ├── RESOURCES.md           # odkazy k danému konceptu
@@ -60,6 +61,14 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   signaturu) musí být anglicky, ne česky. Výjimka jsou textové hodnoty
   určené jako výstup pro uživatele (např. `"Ahoj"` jako výchozí pozdrav) —
   ty zůstávají česky, protože jsou to data/obsah, ne identifikátor.
+- Když je potřeba něco vysvětlit nebo dát širší kontext (nástroj, průřezové
+  téma, „proč to tak je“), můžeš rovnou vygenerovat samostatný Markdown
+  soubor do `<téma>/docs/` — vzor je `django/docs/` (např. `CSRF.md`,
+  `UV.md`). Název velkými písmeny se `_` (`TIME_AND_TIMEZONES.md`), obsah
+  česky, věcně, s odkazy na oficiální docs. Nový soubor odkaž z
+  `<téma>/CLAUDE.md` a v `THEORY.md` na něj odkazuj místo opakování.
+  Patří sem témata, která přesahují jeden koncept — výklad k jednomu
+  konceptu zůstává v jeho `THEORY.md`.
 - Commit zprávy piš podle [`COMMIT_CONVENTION.md`](COMMIT_CONVENTION.md).
 - **Při kontrole vlastního řešení cvičení nikdy neprozrazuj chybu ani opravu
   přímo.** Naváděj otázkami a nápovědami (co zkontrolovat, co si vypsat,
