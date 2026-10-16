@@ -132,6 +132,43 @@ deactivate
 
 Holý `python` / `pip` ve uv projektu nepoužívej, vždycky přes `uv run`.
 
+## Nastavení PyCharmu
+
+PyCharm má na projekt jeden interpreter, ale každé cvičení má vlastní
+`.venv`. Když máš otevřené celé repo `learning-lab`, nastav pro aktuální
+cvičení dvě věci:
+
+1. **Interpreter**: Settings → Project: learning-lab → Python Interpreter →
+   Add Interpreter → Add Local Interpreter → Select existing →
+   `…/exercises/NN-…/solution/.venv/bin/python`. V seznamu balíčků pak
+   musí být `django` a `ruff`.
+2. **Sources Root**: pravým tlačítkem na `solution/` → Mark Directory as →
+   Sources Root (nebo Settings → Project Structure). Importy `config` a
+   `pages` se tak hledají od `solution/`, stejně jako při
+   `uv run manage.py`.
+
+U dalšího cvičení obojí přepni na jeho `solution/` a starý Sources Root
+odeber (křížkem v Project Structure), aby se cvičení nepletla.
+
+**Proč na tom záleží:** v kořeni repa je složka `django/` (tohle téma).
+PyCharm přidává kořen projektu do cesty pro importy a Python bere i
+složku bez `__init__.py` jako balíček. Se špatně nastaveným interpreterem
+proto `import django` trefí tuhle složku místo knihovny a PyCharm hlásí:
+
+```
+Cannot find reference 'core' in 'imported module django'
+```
+
+Při skutečném běhu (`uv run` ze `solution/`) problém nenastane, jde čistě
+o analýzu kódu v IDE.
+
+**Alternativa:** File → Open… → `solution/` → New Window. Kořenem projektu
+je pak rovnou `solution/`, PyCharm najde `.venv` sám (případně ho vyber
+ve stejném dialogu jako výše) a není potřeba nic přepínat.
+
+**Ruff:** Settings → Tools → Ruff → zapnout *Run ruff when the python file
+is saved*, viz [`RUFF.md`](RUFF.md).
+
 ## Jak to používáme v tomhle repu
 
 Každé cvičení (`solution/` i `reference/`) je samostatný uv projekt.
