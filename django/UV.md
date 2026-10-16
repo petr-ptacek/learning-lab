@@ -106,6 +106,32 @@ Když projekt v `.python-version` požaduje verzi, kterou na stroji nemáš,
 `uv sync` / `uv run` ji stáhne automaticky. Každý projekt tak může mít
 jinou verzi a navzájem se neovlivňují.
 
+### Pozor na pyenv: holý `python` v uv projektu
+
+Na stroji je nainstalovaný i **pyenv**. Ten podstrčí vlastní příkaz `python`
+(shim v `~/.pyenv/shims/`), který se podívá do `.python-version`
+v aktuální složce a hledá tu verzi **ve svém** úložišti. Verzi
+nainstalovanou přes uv nezná, proto v uv projektu:
+
+```
+$ python
+pyenv: version `3.14' is not installed (set by .../solution/.python-version)
+```
+
+Nejde o chybu v projektu. `.python-version` je společná konvence, kterou
+čte pyenv i uv, a každý si verzi hledá jinde. Řešení:
+
+```bash
+uv run python              # ✅ doporučeno: Python z .venv projektu, pyenv se obejde
+uv run manage.py shell     # totéž pro Django příkazy
+
+source .venv/bin/activate  # alternativa: aktivace venv,
+python --version           #   pak `python` ukazuje do .venv
+deactivate
+```
+
+Holý `python` / `pip` ve uv projektu nepoužívej, vždycky přes `uv run`.
+
 ## Jak to používáme v tomhle repu
 
 Každé cvičení (`solution/` i `reference/`) je samostatný uv projekt.
