@@ -151,6 +151,45 @@ Tenký wrapper kolem `django-admin`. Jediné, co navíc dělá, je nastavení
 projekt mají načíst. Proto se po založení projektu všechno dál spouští
 přes `uv run manage.py …`.
 
+## Migrace — stručně
+
+Do hloubky je řeší koncept 03. Tady jen tolik, abys věděl, co dělá
+`migrate` hned po založení projektu.
+
+**Migrace = verzovaná změna schématu databáze, uložená jako soubor
+v repu.** Místo ručního `CREATE TABLE` / `ALTER TABLE` popíšeš data
+v Pythonu (model) a Django z toho vygeneruje kroky, jak DB dostat do
+odpovídajícího stavu. Obdoba z JS světa: migrace v Prisma / Knex /
+TypeORM. Dá se to brát i jako „git pro strukturu DB“: každá migrace je
+commit, který ví, na které předchozí navazuje.
+
+Dva příkazy, dvě různé věci:
+
+| Příkaz | Co dělá | Sahá na DB? |
+|---|---|---|
+| `uv run manage.py makemigrations` | porovná modely (`models.py`) s existujícími migracemi a **vygeneruje nový soubor** do `<app>/migrations/` | ne |
+| `uv run manage.py migrate` | **aplikuje** všechny dosud neaplikované migrace na DB | ano |
+
+Při změně modelu je tedy pořadí vždycky **`makemigrations` → `migrate`**.
+Vygenerovaný soubor se commituje, aby kolega (nebo produkce) jen pustil
+`migrate` a měl stejné schéma.
+
+Které migrace už v DB jsou, si Django pamatuje v tabulce
+`django_migrations`. `migrate` je proto bezpečné pouštět opakovaně:
+aplikuje jen to, co chybí.
+
+**Proč `migrate` hned u prázdného projektu?** Vestavěné appky
+v `INSTALLED_APPS` (`auth`, `admin`, `sessions`, `contenttypes`) mají
+modely i migrace přibalené přímo v Djangu (tabulky uživatelů, sessions,
+…). `makemigrations` u čerstvého projektu nic nevygeneruje (`No changes
+detected`), protože tvoje appka zatím nemá modely. `migrate` jen aplikuje
+ty hotové migrace. Dokud to neuděláš, `runserver` hlásí
+`You have N unapplied migration(s)`.
+
+```bash
+uv run manage.py showmigrations   # přehled: [X] aplikovaná, [ ] čeká
+```
+
 ## Cesta requestu — co se děje před tvým view
 
 ```
