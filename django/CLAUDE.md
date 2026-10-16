@@ -72,9 +72,14 @@ exercises/NN-nazev-ukolu/
   otázkami. Kód pravidla (např. `DJ008`) jde prozradit, protože ho vypíše
   i sám Ruff.
 - Spuštění cvičení v `solution/`: `uv sync`, pak
-  `uv run manage.py migrate` a `uv run manage.py runserver`, ověření přes
-  prohlížeč / `curl`. Od konceptu testování ověřují zadání i testy
-  (`uv run manage.py test`).
+  `uv run manage.py migrate` a `uv run manage.py runserver`. Od konceptu
+  testování ověřují zadání i testy (`uv run manage.py test`).
+- **K ručnímu testování API uživatel používá Postman** (zná ho z FE).
+  Příklady v `README.md` piš tak, aby šly přímo naklikat do Postmanu
+  (metoda, plná URL, hlavičky, raw JSON body). `curl` uváděj jen jako
+  doplněk pro rychlou kontrolu z terminálu. U POST/PUT/PATCH/DELETE
+  pamatuj, že Postman narazí na CSRF (403) stejně jako `curl`, dokud se
+  to v konceptu neřeší (DRF / `csrf_exempt`). V zadání na to upozorni.
 - `README.md` obsahuje místo vstup/výstup funkcí **příklady HTTP requestů a
   odpovědí** (metoda, URL, body → status, JSON), resp. ORM dotazů v
   `manage.py shell` a jejich výsledků — vč. okrajových případů (404,

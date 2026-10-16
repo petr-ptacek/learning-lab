@@ -64,8 +64,13 @@ uv run ruff check .
 
 ### Příklady request → response
 
-Ověřuj přes `curl -i` (vypíše i status a hlavičky), GET případně
-v prohlížeči.
+Ověřuj v **Postmanu** (status, hlavičky i body uvidíš přímo), případně
+rychle z terminálu přes `curl -i`. URL jsou relativní k
+`http://127.0.0.1:8000`.
+
+Tip pro Postman: redirect u `GET /api/health` uvidíš jen s vypnutým
+*Settings → Automatically follow redirects*, jinak Postman rovnou ukáže
+výsledek po přesměrování (200).
 
 | Request | Status | `Content-Type` | Body |
 |---|---|---|---|
