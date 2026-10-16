@@ -20,11 +20,11 @@ Specifika tohoto tématu:
 - Spuštění cvičení: `npm install && npm run dev` uvnitř `solution/`
   (resp. `reference/`), pak otevřít URL, kterou Vite vypíše. `npm run build`
   navíc přes `tsc -b` zkontroluje typy.
-- Bonus (pokud zadání má sekci `## Bonus`) nejde do `main.tsx`/`App.tsx`,
-  ale do sesterské dvojice souborů `src/AppBonus.tsx` + `src/main-bonus.tsx`
-  a vlastního `bonus.html` (Vite bez dalšího configu servíruje víc HTML
-  vstupních bodů zároveň) — spustí se stejným `npm run dev`, jen se otevře
-  `/bonus.html` místo `/index.html`.
+- Bonus (pokud zadání má sekci `## Bonus`) jde přes **jediný entry point**
+  (`index.html` → `src/main.tsx` → `src/App.tsx`) — žádný další
+  `bonus.html` ani `main-bonus.tsx`. Bonus se píše do sesterské komponenty
+  `src/AppBonus.tsx` (prázdný stub), kterou `App.tsx` vyrenderuje pod
+  základním řešením, takže je obojí vidět na jedné stránce po `npm run dev`.
 - Uživatel (Petr) je zkušený Vue.js developer (senior), React se učí od
   základů — nepředpokládej znalost Reactu samotného, ale Vue znalost ano.
   V `THEORY.md` u konceptů, kde existuje přímá obdoba ve Vue (komponenty,
