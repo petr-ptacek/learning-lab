@@ -4,7 +4,7 @@ Vyzkoušej si rekurzi — funkci, která volá sama sebe.
 
 ## Požadavky
 
-- Napiš rekurzivní funkci `factorial(n)` — vrátí `n!` (`1` pro `n <= 1`,
+- Napiš rekurzivní funkci `factorial(n)` — vrátí `n!` (`1` pro `n <= 0`,
   jinak `n * factorial(n - 1)`).
 - Napiš rekurzivní funkci `fibonacci(n)` — vrátí n-tý člen Fibonacciho
   posloupnosti (`fibonacci(0) = 0`, `fibonacci(1) = 1`, jinak
