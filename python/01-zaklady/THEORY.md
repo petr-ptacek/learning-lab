@@ -64,6 +64,8 @@ f"{podil:.0%}"         # zobrazí jako procenta, 0 desetinných míst
 Výchozí zarovnání: čísla doprava, text doleva. Bez specifikace šířky se nic
 nedoplňuje — zarovnání má smysl, jen když je šířka pole pevná.
 
+Kompletní přehled s příklady: [`STRING_FORMATTING.md`](../docs/STRING_FORMATTING.md).
+
 ## Konverze typů
 
 - `int("42")` → `42`
