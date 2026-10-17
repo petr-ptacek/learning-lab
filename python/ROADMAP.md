@@ -5,7 +5,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 
 - [x] 01-zaklady
 - [x] 02-podminky-cykly
-- [ ] 03-funkce — vlastní funkce (`def`, parametry, návratové hodnoty,
+- [x] 03-funkce — vlastní funkce (`def`, parametry, návratové hodnoty,
       scope) — vestavěné funkce Pythonu jsou samostatný koncept, viz
       05-vestavene-funkce
 - [ ] 04-datove-struktury
