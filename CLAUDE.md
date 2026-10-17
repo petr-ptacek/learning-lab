@@ -83,9 +83,13 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   [`reference-solution`](.claude/skills/reference-solution/SKILL.md) —
   použij ho v momentě, kdy potvrzuješ správnost řešení, ať na to
   nezapomeneš.
-- Bonus patří vždy do sesterského souboru `bonus.py` vedle `main.py`
+- Bonus patří do sesterského souboru `bonus.py` vedle `main.py`
   (`solution/bonus.py`, a po dořešení i `reference/bonus.py`) — ne do
-  jednoho `main.py` s base řešením a ne do nové složky. Složku navíc zaveď
-  jen tehdy, když si to daný koncept opravdu vyžádá (typicky až
-  `09-moduly-balicky`, kde se řeší `import` mezi vlastními moduly) — do
-  té doby nepřipravuj strukturu na hypotetické budoucí případy.
+  nové složky. Je to **volitelné**: `bonus.py` smí být samostatný a
+  obsahovat celé řešení včetně bonusu (klidně zkopírovaný základ
+  s úpravami). Když je bonus v `solution/` rovnou v `main.py`, při
+  kontrole to neber jako chybu — jen ho můžeš zmínit, že by šel oddělit.
+  Až bude probraný `09-moduly-balicky`, může `bonus.py` základ z `main.py`
+  importovat místo kopírování. Další složky zaváděj jen tehdy, když si to
+  koncept opravdu vyžádá — do té doby nepřipravuj strukturu na
+  hypotetické budoucí případy.
