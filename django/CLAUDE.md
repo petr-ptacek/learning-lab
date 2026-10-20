@@ -16,6 +16,13 @@ Specifika tohoto tématu:
   (`urls.py` ≈ router, middleware ≈ router guard / axios interceptor,
   serializer ≈ validační schéma typu zod + mapování na DTO, model ≈ TS
   `interface` + perzistence) — s krátkým kódem vedle sebe, ne jen slovně.
+- **`THEORY.md` je u Djanga podrobnější** než obecný default repa
+  (výslovné přání uživatele). Nestačí shrnutí: vysvětluj i **proč** a
+  **jak to funguje uvnitř** (např. průchod URL resolverem krok za krokem),
+  s číslovanými sekcemi, ukázkami kódu, FE/Vue srovnáním, tabulkami
+  „kdy co použít“ a sekcí „Časté chyby“. Vzor je
+  `02-urls-a-views/THEORY.md`. Pořád ale nepředbíhej řešení cvičení:
+  teorie učí nástroje, cvičení je aplikuje.
 - OOP v Pythonu uživatel zvládá, případně doplňuje za běhu — u
   class-based views / DRF stačí krátká poznámka k Python specifikům
   (dekorátory, `super()`, mixiny/vícenásobná dědičnost), ne výklad OOP.
@@ -60,13 +67,13 @@ exercises/NN-nazev-ukolu/
         └── migrations/
 ```
 
-- Scaffold je předpřipravený a spustitelný (`startproject` + `startapp`,
-  app zaregistrovaná v `INSTALLED_APPS`, `urls.py` napojené). Soubory,
-  kam se píše řešení, jsou prázdné stuby — co přesně implementovat, říká
-  `README.md`. `pyproject.toml` je bez build-systemu (není to balíček,
-  jen aplikace). Výjimka: `01-projekt-a-request-cyklus/exercises/01-prvni-projekt`,
-  kde je založení projektu přes uv součástí zadání (`solution/` obsahuje
-  jen `.gitkeep`).
+- **Kostru si uživatel zakládá sám** (procvičení uv + `startproject` +
+  `startapp`), dokud neřekne jinak. `solution/` obsahuje jen `.gitkeep`
+  a první část `README.md` („Kostra projektu“) vyjmenuje požadavky na
+  kostru (název appky, prefix URL, registrace, Ruff), bez návodu krok za
+  krokem. Případná data, která se mají vložit, jsou v zadání jako
+  hotový blok kódu. `reference/` zakládá Claude stejnými příkazy.
+  `pyproject.toml` je bez build-systemu (není to balíček, jen aplikace).
 - **Ruff** (výslovně vyžádaný, výjimka z obecného pravidla „žádný
   tooling navíc“) je v každém cvičení jako dev závislost
   (`uv add --dev ruff`) s konfigurací v `pyproject.toml`, viz
