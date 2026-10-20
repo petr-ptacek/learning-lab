@@ -5,7 +5,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 
 ## Část 1 — Jak Django funguje (jádro)
 
-- [ ] 01-projekt-a-request-cyklus — projekt vs. app, `manage.py`,
+- [x] 01-projekt-a-request-cyklus — projekt vs. app, `manage.py`,
   `settings.py`, cesta requestu: URL → view → `HttpResponse` /
   `JsonResponse`
 - [ ] 02-urls-a-views — `path()`, path convertery, `include()`, pojmenované
