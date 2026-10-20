@@ -16,3 +16,6 @@ opakování:
 - `*args` / `**kwargs`, rozbalování při volání, v literálech a při
   přiřazení (obdoba JS rest/spread) v
   [`ARGS_KWARGS_AND_UNPACKING.md`](docs/ARGS_KWARGS_AND_UNPACKING.md)
+- velikost písmen (`lower` / `upper` / `casefold` / `title` …),
+  porovnávání bez ohledu na velikost písmen a diakritiku v
+  [`STRING_CASE_AND_COMPARISON.md`](docs/STRING_CASE_AND_COMPARISON.md)
