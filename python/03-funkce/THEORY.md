@@ -81,6 +81,9 @@ print_info(name="Petr", age=30)
 
 `**kwargs` je uvnitř funkce dict (slovník) — podrobně se probere u
 datových struktur, tady stačí umět s ním takhle základně pracovat.
+Rozbalování při volání (`f(*lst)`, `f(**d)`), v literálech a při
+přiřazení, porovnané s JS rest/spread, je v
+[`../docs/ARGS_KWARGS_AND_UNPACKING.md`](../docs/ARGS_KWARGS_AND_UNPACKING.md).
 
 ## Rozsah platnosti (scope)
 
