@@ -9,6 +9,8 @@ nahradí v konceptu 03.
 Kostru zakládáš **sám**, stejně jako v cvičení
 [`01-prvni-projekt`](../../../01-projekt-a-request-cyklus/exercises/01-prvni-projekt/README.md),
 tentokrát bez návodu krok za krokem. `solution/` obsahuje jen `.gitkeep`.
+Když si nevíš rady, celý postup s vysvětlením je v
+[`PROJECT_SETUP.md`](../../../docs/PROJECT_SETUP.md).
 
 - uv projekt s Pythonem 3.14, `django` jako závislost, `ruff` jako dev
   závislost a konfigurace Ruffu z [`RUFF.md`](../../../docs/RUFF.md)

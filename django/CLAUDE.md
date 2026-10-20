@@ -37,7 +37,8 @@ npm: `pyproject.toml` ≈ `package.json`, `uv.lock` ≈ `package-lock.json`,
 `npm install <pkg>`, `uv run` ≈ `npx` / `npm run`). Úvod a přehled příkazů je v
 [`UV.md`](docs/UV.md), linter/formatter v [`RUFF.md`](docs/RUFF.md), struktura
 Django projektu v
-[`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md), CSRF v
+[`PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md), postup založení
+projektu krok za krokem v [`PROJECT_SETUP.md`](docs/PROJECT_SETUP.md), CSRF v
 [`CSRF.md`](docs/CSRF.md), `DEBUG` a `ALLOWED_HOSTS` v
 [`DEBUG_AND_ALLOWED_HOSTS.md`](docs/DEBUG_AND_ALLOWED_HOSTS.md), práce s
 časem v [`TIME_AND_TIMEZONES.md`](docs/TIME_AND_TIMEZONES.md) — v

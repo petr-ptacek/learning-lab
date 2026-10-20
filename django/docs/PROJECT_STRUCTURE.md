@@ -2,6 +2,8 @@
 
 Referenční přehled: co je který soubor, jak spolu souvisí a kde co hledat.
 Do hloubky jednotlivé části rozebírají koncepty v [`ROADMAP.md`](../ROADMAP.md).
+Jak projekt krok za krokem založit, popisuje
+[`PROJECT_SETUP.md`](PROJECT_SETUP.md).
 
 ## Projekt vs. app
 
