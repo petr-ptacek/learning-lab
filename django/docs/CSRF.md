@@ -98,6 +98,30 @@ Proč to funguje: `zla-stranka.cz` dokáže prohlížeč přimět, aby cookie
 číst cookies ani odpovědi z `banka.cz`, a proto do formuláře nebo hlavičky
 nemá jakou hodnotu dát.
 
+### Proč nestačí token jen v cookie
+
+Cookie `csrftoken` prohlížeč přibalí i k requestu z cizí stránky, úplně
+stejně jako session cookie. Kdyby Django kontrolovalo jen ji, útok by
+prošel. Rozhoduje až **druhá kopie v requestu**, kterou musí vložit
+stránka sama:
+
+| | Vlastní FE na `banka.cz` | `zla-stranka.cz` |
+|---|---|---|
+| cookie `csrftoken` v requestu | ✅ prohlížeč přibalí | ✅ prohlížeč přibalí |
+| přečíst cookie a dát token do hlavičky / pole formuláře | ✅ `document.cookie` vlastní domény | ❌ cookie cizí domény nepřečte |
+| výsledek | projde | **403** |
+
+Formulář útočníka z příkladu výše tedy cookie s tokenem odešle, ale pole
+`csrfmiddlewaretoken` v něm není (nebo má vymyšlenou hodnotu), protože
+útočník token nezná. Cookie „má“ jen naslepo: prohlížeč ji pošle za něj,
+on ji ale nevidí, a nemůže ji proto zopakovat.
+
+Mimochodem i cookie `csrftoken` má ve výchozím stavu `SameSite=Lax`
+([`CSRF_COOKIE_SAMESITE`](https://docs.djangoproject.com/en/6.1/ref/settings/#csrf-cookie-samesite)),
+takže ji moderní prohlížeč u cross-site POST obvykle nepošle vůbec.
+Ochrana na tom ale nestojí, funguje i bez toho díky porovnání obou
+kopií.
+
 U HTTPS Django navíc kontroluje hlavičku `Origin` / `Referer`. Request
 musí přicházet ze stejné domény, nebo z domény uvedené
 v `CSRF_TRUSTED_ORIGINS`.
