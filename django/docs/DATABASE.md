@@ -65,9 +65,14 @@ uv run manage.py loaddata books
 
 - `loaddata` záznamy se stejným `pk` **přepíše**, ostatní nechá být.
   Opakované nahrání tedy nevytváří duplicity.
-- Pole, která ve fixture chybí, dostanou výchozí hodnotu z modelu.
-  Povinné pole bez `default` musí ve fixture být.
-- `loaddata` nevolá `save()` ani validaci, data jdou rovnou do DB.
+- Pole, která ve fixture chybí, dostanou `default` z modelu. Povinné pole
+  bez `default` musí ve fixture být.
+- `loaddata` ukládá „surově“ (`raw`): nevolá vlastní `save()`, validaci
+  a **nevyplní `auto_now_add` / `auto_now`**. Pole `created_at` proto
+  musí být ve fixture, jinak `NOT NULL constraint failed`.
+- Fixture musí odpovídat **aktuálnímu** modelu. Po přidání povinného
+  pole bez `default` (třeba unikátního `slug`) stará fixture přestane jít
+  nahrát. Vyexportuj ji znovu přes `dumpdata`.
 - Fixtures se commitují. V cvičeních je bude mít zadání jako hotový soubor.
 
 Smazání všech dat (tabulky zůstanou):

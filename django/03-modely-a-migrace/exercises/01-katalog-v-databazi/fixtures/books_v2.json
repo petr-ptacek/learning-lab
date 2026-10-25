@@ -1,0 +1,10 @@
+[
+  {"model": "books.book", "pk": 1, "fields": {"title": "Krakatit", "author": "Karel Čapek", "year": 1924, "genre": "novel", "pages": 280, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 2, "fields": {"title": "Válka s mloky", "author": "Karel Čapek", "year": 1936, "genre": "novel", "pages": 320, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 3, "fields": {"title": "Saturnin", "author": "Zdeněk Jirotka", "year": 1942, "genre": "novel", "pages": 240, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 4, "fields": {"title": "Babička", "author": "Božena Němcová", "year": 1855, "genre": "novel", "pages": 300, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 5, "fields": {"title": "Osudy dobrého vojáka Švejka", "author": "Jaroslav Hašek", "year": 1921, "genre": "novel", "pages": 750, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 6, "fields": {"title": "Spalovač mrtvol", "author": "Ladislav Fuks", "year": 1967, "genre": "novel", "pages": 160, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 7, "fields": {"title": "R.U.R.", "author": "Karel Čapek", "year": 1920, "genre": "drama", "pages": 100, "created_at": "2026-01-01T12:00:00Z"}},
+  {"model": "books.book", "pk": 8, "fields": {"title": "Kytice", "author": "Karel Jaromír Erben", "year": 1853, "genre": "poetry", "pages": null, "created_at": "2026-01-01T12:00:00Z"}}
+]
