@@ -42,13 +42,26 @@ def validate_year(value):
 VALIDATORS = {"title": validate_text, "author": validate_text, "year": validate_year}
 
 
-def validate_book(data):
+def validate_book(data, partial=False):
+    """Collect errors for all fields; with partial=True missing fields are fine."""
     errors = {}
     for field, validate in VALIDATORS.items():
-        error = validate(data[field]) if field in data else REQUIRED
+        if field in data:
+            error = validate(data[field])
+        else:
+            error = None if partial else REQUIRED
         if error:
             errors[field] = error
     return errors
+
+
+def clean_book_fields(data):
+    """Return only the known fields present in data, texts stripped."""
+    fields = {field: data[field] for field in VALIDATORS if field in data}
+    for field in ("title", "author"):
+        if field in fields:
+            fields[field] = fields[field].strip()
+    return fields
 
 
 def parse_json_object(request):
@@ -72,12 +85,8 @@ def create_book(request):
     if errors:
         return ReadableJsonResponse({"errors": errors}, status=400)
 
-    book = {
-        "id": max((book["id"] for book in BOOKS), default=0) + 1,
-        "title": data["title"].strip(),
-        "author": data["author"].strip(),
-        "year": data["year"],
-    }
+    book = {"id": max((book["id"] for book in BOOKS), default=0) + 1}
+    book.update(clean_book_fields(data))
     BOOKS.append(book)
 
     body = serialize_book(book)
