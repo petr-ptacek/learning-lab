@@ -5,8 +5,7 @@ from books.data import BOOKS
 
 
 def _serialize_book(book):
-    book_copy = {**book, "url": reverse("books:detail", kwargs={"book_id": book["id"]})}
-    return book_copy
+    return {**book, "url": reverse("books:detail", kwargs={"book_id": book["id"]})}
 
 
 def _parse_int_param(request: HttpRequest, name: str):
