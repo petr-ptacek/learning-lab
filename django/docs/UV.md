@@ -217,8 +217,9 @@ o analýzu kódu v IDE.
 je pak rovnou `solution/`, PyCharm najde `.venv` sám (případně ho vyber
 ve stejném dialogu jako výše) a není potřeba nic přepínat.
 
-**Ruff:** Settings → Tools → Ruff → zapnout *Run ruff when the python file
-is saved*, viz [`RUFF.md`](RUFF.md).
+**Ruff:** Settings → Python → Tools → External Tools → Ruff **ON** a v
+Tools → Actions on Save zaškrtnout *Reformat code* a *Optimize imports*
+(jen pro Python). Podrobně v [`RUFF.md`](RUFF.md#nastavení-pycharmu).
 
 ## Jak to používáme v tomhle repu
 

@@ -98,9 +98,35 @@ spadne na Ruffu, kód pravidla ti řekne proč.
 
   Bere se to jako součást řešení, stejně jako by to po tobě chtělo CI
   v práci.
-- Editor: rozšíření **Ruff** pro VS Code / vestavěná podpora v PyCharm
-  (Settings → Tools → Ruff) umí formátovat při uložení, podobně jako
-  Prettier.
+- Editor: ve VS Code rozšíření **Ruff**, v PyCharmu vestavěná podpora
+  (postup níže). Obojí umí formátovat při uložení, podobně jako Prettier.
+
+## Nastavení PyCharmu
+
+Ruff je v PyCharmu vestavěný, plugin z Marketplace (Ruff od Kodai Aono)
+**neinstaluj**. Přetahoval by se s vestavěnou podporou.
+
+1. Settings → **Python → Tools → External Tools** → u řádku **Ruff**
+   přepni **ON**. Ve sloupci Lookup musí mít *Sdk* fajfku, tedy Ruff
+   se našel v `.venv` interpreteru projektu. „Not found in $PATH“
+   nevadí, globálně Ruff nepotřebuješ.
+2. V dialogu **Configure Ruff** nech zaškrtnuté všechny tři volby:
+   - *Inspections*: podtrhávání chyb (`F401`, `DJ008` …) přímo v editoru,
+   - *Formatting*: Reformat Code (Ctrl+Alt+L) volá `ruff format`
+     místo formatteru PyCharmu,
+   - *Import optimizer*: Optimize Imports (Ctrl+Alt+O) dělá Ruff.
+3. Tím se při uložení ještě nic nespustí. Klikni na odkaz **All actions
+   on save…** (nebo Settings → **Tools → Actions on Save**) a zaškrtni
+   **Reformat code** a **Optimize imports**. U obou v rozbalovači
+   *All file types* vyber jen **Python**, jinak by PyCharm při uložení
+   přeformátovával i Markdown a další soubory.
+
+Ruff se bere z `.venv` aktuálního interpreteru. Po přepnutí interpreteru
+na další cvičení (viz [`UV.md`](UV.md#nastavení-pycharmu)) tedy pojede
+jeho Ruff s jeho konfigurací z `pyproject.toml`.
+
+Opravy ostatních pravidel (`ruff check --fix`) se při uložení nespouští,
+proto před odevzdáním pořád pusť `uv run ruff check .`.
 
 ## Odkazy
 
