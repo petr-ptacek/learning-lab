@@ -187,8 +187,11 @@ Po chybném `POST` se výpis nesmí změnit, pořád `count: 6`.
 
 1. Proč nepovolená metoda vrací 405 a ne 404, když pro `PUT` žádné
    view nemáš?
-2. Co by se stalo, kdyby `POST` bez `@csrf_exempt` posílal prohlížeč
-   z jiné domény s cookie přihlášeného uživatele? Proč to tady nevadí?
+2. Představ si, že by API mělo přihlášení přes session cookie a view
+   by pořád mělo `@csrf_exempt`. Co by se stalo, kdyby cizí stránka
+   poslala `POST` z prohlížeče přihlášeného uživatele? Který middleware
+   by to bez `@csrf_exempt` zastavil (a proč ne kontrola přihlášení)?
+   A proč `@csrf_exempt` v tomhle cvičení nevadí?
 3. Smazání knihy 6 a nový `POST` přidělí zase ID 6. Jaký problém by to
    způsobilo klientovi, který si uložil odkaz `/api/books/6/`? Jak to
    řeší databáze (koncept 03)?
