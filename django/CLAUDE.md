@@ -41,7 +41,11 @@ Django projektu v
 projektu krok za krokem v [`PROJECT_SETUP.md`](docs/PROJECT_SETUP.md), CSRF v
 [`CSRF.md`](docs/CSRF.md), `DEBUG` a `ALLOWED_HOSTS` v
 [`DEBUG_AND_ALLOWED_HOSTS.md`](docs/DEBUG_AND_ALLOWED_HOSTS.md), práce s
-časem v [`TIME_AND_TIMEZONES.md`](docs/TIME_AND_TIMEZONES.md) — v
+časem v [`TIME_AND_TIMEZONES.md`](docs/TIME_AND_TIMEZONES.md), modely
+a pole v [`MODELS_AND_FIELDS.md`](docs/MODELS_AND_FIELDS.md), migrace
+v [`MIGRATIONS.md`](docs/MIGRATIONS.md), CRUD přes ORM v
+[`ORM_BASICS.md`](docs/ORM_BASICS.md), databáze (SQLite, fixtures,
+PostgreSQL) v [`DATABASE.md`](docs/DATABASE.md) — v
 `THEORY.md` na ně odkazuj místo opakování.
 Průřezová témata, která nepatří k jednomu konceptu, patří do `docs/`.
 
