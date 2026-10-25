@@ -20,6 +20,50 @@ Pythonu. Když zapomeneš aktivovat venv, balíček skončí globálně.
 nezamyká. uv tohle řeší stejně jako npm: projekt má manifest a lockfile
 a `.venv` ve složce projektu.
 
+## Instalace
+
+uv se instaluje **globálně, jednou na stroj**, ne do projektu (obdoba
+`nvm`, ne `npm install`). Nepotřebuje k tomu žádný Python, je to
+samostatná binárka.
+
+Oficiální instalátor (Linux / macOS):
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Uloží `uv` a `uvx` do `~/.local/bin/`, nic nevyžaduje `sudo`. Tahle
+složka už v `PATH` je, takže po otevření nového terminálu stačí ověřit:
+
+```bash
+uv --version
+```
+
+Pokud shell `uv` nenajde, chybí `~/.local/bin` v `PATH`. Instalátor
+na konci vypíše, co přidat do `~/.zshrc`.
+
+Další užitečné kroky:
+
+```bash
+uv self update              # aktualizace na nejnovější verzi
+
+# doplňování příkazů tabulátorem v zsh
+echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
+```
+
+**Nedělej `pip install uv`** do systémového Pythonu. Debian/Ubuntu to
+stejně zablokuje (`externally-managed-environment`) a `uv self update`
+by pak nefungoval. Další způsoby (`pipx`, Homebrew, Windows) jsou v
+[Installing uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+Odinstalace:
+
+```bash
+uv cache clean
+rm -r "$(uv python dir)" "$(uv tool dir)"   # Pythony a nástroje stažené přes uv
+rm ~/.local/bin/uv ~/.local/bin/uvx
+```
+
 ## Mentální model přes npm
 
 | npm                        | uv                    |
