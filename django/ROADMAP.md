@@ -8,7 +8,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 - [x] 01-projekt-a-request-cyklus — projekt vs. app, `manage.py`,
   `settings.py`, cesta requestu: URL → view → `HttpResponse` /
   `JsonResponse`
-- [x] 02-urls-a-views — `path()`, path convertery, `include()`, pojmenované
+- [ ] 02-urls-a-views — `path()`, path convertery, `include()`, pojmenované
   routy a `reverse()`, objekt `request` (metoda, query parametry, body)
 - [ ] 03-modely-a-migrace — `models.Model`, typy polí, `makemigrations` /
   `migrate`, co je v migraci, CRUD v `manage.py shell`

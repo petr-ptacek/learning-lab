@@ -6,11 +6,12 @@ Naučit se z requestu vytáhnout všechno, co view potřebuje:
 
 - **parametry z cesty** (`/api/books/3/`)
 - **query parametry** (`?author=čapek&year_from=1930`)
-- metodu a hlavičky
+- **metodu a JSON body** (`POST` s `{"title": …}`)
 
 A naopak URL **neskládat ručně**, ale generovat je z pojmenovaných rout
-přes `reverse()`. Na konci bys měl umět napsat read-only JSON API
-s detailem, výpisem, filtry a správnými chybovými statusy.
+přes `reverse()`. Na konci bys měl umět napsat jednoduché JSON API
+s detailem, výpisem, filtry, vytvořením a smazáním záznamu a správnými
+statusy. Je to ruční verze toho, co později udělá DRF (koncepty 12–13).
 
 Staví na `01-projekt-a-request-cyklus` (view, `urls.py`, `include()`,
 `JsonResponse`). Data zatím držíme v obyčejném Python seznamu, databáze
@@ -215,7 +216,8 @@ request.headers["Accept"]    # hlavičky, názvy bez ohledu na velikost písmen
 request.body                 # surové body (bytes), u JSONu json.loads(request.body)
 ```
 
-`request.body` a práce s POST / JSON body přijdou v dalším cvičení.
+Metodu a JSON body rozebírá podsekce
+[Metoda a JSON body](#metoda-a-json-body) níže.
 
 ### Query parametry — `request.GET`
 
@@ -252,6 +254,87 @@ se malá pomocná funkce.
 `request.GET` existuje u **každé** metody (query string může mít i POST).
 Název je jen historický.
 
+### Metoda a JSON body
+
+V REST API sdílí jedna URL víc operací a liší se metodou:
+
+| Request | Operace | Obvyklý status úspěchu |
+|---|---|---|
+| `GET /api/books/` | výpis | 200 |
+| `POST /api/books/` | vytvoření | **201 Created** + hlavička `Location` |
+| `GET /api/books/3/` | detail | 200 |
+| `DELETE /api/books/3/` | smazání | **204 No Content**, prázdné body |
+
+Router (`urls.py`) metodu **nerozlišuje**. Obě metody na stejné URL
+dorazí do stejného view a větví se až uvnitř přes `request.method`
+(vždy velkými písmeny, `"POST"`). Obdoba Express `router.route("/books")
+.get(…).post(…)`, jen ručně.
+
+Nepovolenou metodu odmítne dekorátor z `django.views.decorators.http`:
+
+```python
+from django.views.decorators.http import require_http_methods
+
+
+@require_http_methods(["GET", "POST"])
+def book_list(request): ...
+```
+
+Pro jinou metodu vrátí **405** s hlavičkou `Allow: GET, POST` a prázdným
+body, a tvoje view se vůbec nezavolá. Existují i zkratky `@require_GET`
+a `@require_POST`.
+
+**JSON body** je v `request.body` jako surové `bytes`. `request.POST`
+obsahuje jen data z HTML formuláře (`application/x-www-form-urlencoded`),
+pro JSON je **prázdný**. Na rozdíl od Expressu s `express.json()` Django
+JSON za tebe neparsuje:
+
+```python
+import json
+
+data = json.loads(request.body)   # bytes → Python objekt
+```
+
+- Nevalidní JSON (i prázdné body `b""`) vyhodí `json.JSONDecodeError`,
+  podtřídu `ValueError`. Neošetřený znamená 500, správně je 400.
+- Validní JSON nemusí být objekt. `json.loads(b"[1, 2]")` vrátí `list`,
+  `json.loads(b"42")` vrátí `int`. Na `data.get(...)` pak dostaneš
+  `AttributeError`.
+
+Převod typů JSON → Python:
+
+| JSON | Python | Pozor |
+|---|---|---|
+| `{}` | `dict` | |
+| `[]` | `list` | |
+| `"text"` | `str` | `"1936"` je pořád string, ne číslo |
+| `1936` | `int` | |
+| `1936.0` | `float` | není `int`, i když je „celé“ |
+| `true` / `false` | `True` / `False` | `bool` je v Pythonu **podtřída `int`**: `isinstance(True, int)` je `True` |
+| `null` | `None` | |
+
+JSON nemá schéma, takže typ každého pole ověřuješ sám. Obdoba ručního
+`typeof` / zod validace na FE. DRF serializery (koncept 12) to později
+udělají deklarativně a chyby vrátí ve tvaru
+`{"pole": ["zpráva"]}`, tedy po polích, ne jednou hláškou.
+
+**Hlavičky odpovědi:** `HttpResponse` / `JsonResponse` se k nim chová
+jako ke slovníku:
+
+```python
+response = JsonResponse(data, status=201)
+response["Location"] = "/api/books/7/"   # hodnotu samozřejmě přes reverse()
+return response
+```
+
+**Prázdná odpověď (204):** `HttpResponse(status=204)`. `JsonResponse`
+by vždy poslal nějaké JSON body.
+
+**CSRF:** POST a DELETE na obyčejné Django view z Postmanu skončí
+**403**, viz [`../docs/CSRF.md`](../docs/CSRF.md). Pro učební API bez
+přihlášení stačí `@csrf_exempt` (kdy ano a kdy ne je v CSRF.md). DRF to
+pak řeší samo.
+
 ---
 
 ## 6. Status kódy a chybové odpovědi v API
@@ -259,9 +342,12 @@ Název je jen historický.
 | Status | Kdy | Příklad |
 |---|---|---|
 | **200 OK** | úspěch, i když je výsledek prázdný | `?author=xyz` → `{"count": 0, "results": []}` |
-| **400 Bad Request** | klient poslal nesmysl | `?year_from=abc` |
+| **201 Created** | záznam vytvořen | `POST /api/books/` → nová kniha + `Location` |
+| **204 No Content** | úspěch bez těla | `DELETE /api/books/3/` |
+| **400 Bad Request** | klient poslal nesmysl | `?year_from=abc`, nevalidní JSON, chybějící pole |
+| **403 Forbidden** | chybí CSRF token (u nás) | POST z Postmanu bez `@csrf_exempt` |
 | **404 Not Found** | konkrétní zdroj neexistuje | `/api/books/99/` |
-| **405 Method Not Allowed** | URL existuje, metoda ne | view s dekorátorem `@require_GET` dostane jinou metodu (u POST/PUT/DELETE bez CSRF tokenu ale dřív zasáhne CSRF → 403) |
+| **405 Method Not Allowed** | URL existuje, metoda ne | view s `@require_http_methods(["GET", "POST"])` dostane `PUT` (u POST/PUT/DELETE bez CSRF tokenu ale dřív zasáhne CSRF → 403) |
 | **500 Internal Server Error** | chyba **serveru**: neošetřená výjimka | `int("abc")` bez `try` |
 
 Prázdný výsledek filtru je **200**, ne 404. Kolekce `/api/books/`
@@ -316,3 +402,9 @@ přidat stránkování bez rozbití klientů.
 | HTML 404 místo JSON | `Http404` / `get_object_or_404` v API view |
 | `TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False` | `JsonResponse` dostal seznam místo dictu |
 | filtr na `?author=` (prázdný) nic nenajde / najde vše nečekaně | prázdný string vs. `None`, viz sekce 5 |
+| `403 CSRF verification failed` u POST / DELETE z Postmanu | chybí `@csrf_exempt` (nebo CSRF token), viz [`CSRF.md`](../docs/CSRF.md) |
+| `request.POST` je prázdný, i když posíláš JSON | `request.POST` čte jen formuláře, JSON je v `request.body` |
+| 500 `JSONDecodeError` | neošetřený `json.loads` na nevalidní nebo prázdné body |
+| 500 `AttributeError: 'list' object has no attribute 'get'` | body je validní JSON, ale ne objekt |
+| `"year": true` projde kontrolou na `int` | `bool` je podtřída `int` |
+| 500 `RuntimeError: You called this URL via POST, but the URL doesn't end in a slash` | `POST /api/books` bez lomítka, `APPEND_SLASH` neumí POST přesměrovat |
