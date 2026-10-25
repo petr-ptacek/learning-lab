@@ -19,3 +19,6 @@ opakování:
 - velikost písmen (`lower` / `upper` / `casefold` / `title` …),
   porovnávání bez ohledu na velikost písmen a diakritiku v
   [`STRING_CASE_AND_COMPARISON.md`](docs/STRING_CASE_AND_COMPARISON.md)
+- modul `json` (`dumps` / `loads` / `dump` / `load`, převod typů,
+  `ensure_ascii`, `default`, `JSONDecodeError`) v
+  [`JSON.md`](docs/JSON.md)
