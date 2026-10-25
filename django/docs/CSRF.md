@@ -30,6 +30,56 @@ sám. Problém tedy vzniká jen tam, kde se **přihlášení drží v cookie**
 (session auth). U tokenu v hlavičce `Authorization: Bearer …` k němu
 nedojde, protože hlavičku cizí stránka přidat nedokáže.
 
+### Komu cookie patří a kdy se posílá
+
+Častá představa „cookie je vázaná na origin, takže request ze
+`zla-stranka.cz` ji nedostane“ je jen napůl pravda:
+
+| Co | Řídí se podle | Cizí stránka |
+|---|---|---|
+| **čtení** cookie (`document.cookie`) | domény stránky, která čte | ❌ cookie `banka.cz` nepřečte |
+| **čtení odpovědi** z `banka.cz` | same-origin policy / CORS | ❌ nepřečte |
+| **posílání** cookie s requestem | **cílové** domény requestu | ✅ prohlížeč cookie přibalí |
+
+Prohlížeč se při requestu ptá „**kam** to letí?“, ne „**odkud** to
+přišlo?“. Request na `banka.cz` dostane cookies `banka.cz`, ať ho
+spustila záložka s bankou, odkaz v e-mailu, nebo formulář na cizí
+stránce. Útočník tak request odeslat umí, jen nevidí odpověď. K tomu,
+aby převod proběhl, ji ale vidět nepotřebuje.
+
+**Otevřená záložka s bankou není potřeba.** Cookie leží v prohlížeči,
+ne v záložce, a platí, dokud session nevyprší nebo se neodhlásíš
+(u „zůstat přihlášen“ i týdny). Útočníkovi stačí, že má oběť platnou
+session. Proto se odkaz rozesílá hromadně (e-mail, reklama, fórum)
+a vyjde u těch, kdo zrovna přihlášení jsou.
+
+### `SameSite` — novější ochrana v prohlížeči
+
+Atribut cookie `SameSite` mění právě otázku „odkud to přišlo?“:
+
+| Hodnota | Cookie se pošle u requestu spuštěného z cizí stránky |
+|---|---|
+| `Strict` | nikdy |
+| `Lax` | jen při obyčejném prokliku odkazem (GET navigace), **ne** u POST formuláře, `fetch`, `<img>` |
+| `None` | vždy (musí být zároveň `Secure`) |
+
+Django posílá session cookie s `SameSite=Lax`
+([`SESSION_COOKIE_SAMESITE`](https://docs.djangoproject.com/en/6.1/ref/settings/#session-cookie-samesite)),
+takže podvržený POST formulář výše by v moderním prohlížeči session
+cookie nedostal. Intuice „request z cizí stránky letí bez cookie“ tedy
+dnes platí, ale díky `SameSite`, ne díky originu.
+
+CSRF token je přesto potřeba dál:
+
+- **Ne každý prohlížeč a ne každá cookie.** Cookie bez atributu
+  `SameSite` prohlížeče zpracovávají různě, starší prohlížeče ho neznají.
+- **„Site“ není „origin“.** `uzivatel.banka.cz` je pro `SameSite` stejný
+  *site* jako `banka.cz`. Napadená subdoména nebo uživatelský obsah na
+  subdoméně ochranu obejde.
+- **`Lax` pouští GET.** Kdyby `GET /prevod/?komu=…` něco měnil,
+  `SameSite` nepomůže, viz [Které metody se kontrolují](#které-metody-se-kontrolují).
+- **Obrana do hloubky.** `SameSite` hlídá prohlížeč, token hlídá server.
+
 ## Jak Django brání
 
 Django vyžaduje u „nebezpečných“ requestů **tajný token, který cizí
@@ -181,3 +231,4 @@ def webhook(request): ...
 - [`CSRF_TRUSTED_ORIGINS`](https://docs.djangoproject.com/en/6.1/ref/settings/#csrf-trusted-origins)
 - [DRF — Authentication a CSRF](https://www.django-rest-framework.org/topics/ajax-csrf-cors/)
 - [OWASP — CSRF](https://owasp.org/www-community/attacks/csrf)
+- [MDN — `SameSite` cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value)
