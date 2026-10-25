@@ -183,13 +183,20 @@ PyCharm má na projekt jeden interpreter, ale každé cvičení má vlastní
 cvičení dvě věci:
 
 1. **Interpreter**: Settings → Project: learning-lab → Python Interpreter →
-   Add Interpreter → Add Local Interpreter → Select existing →
-   `…/exercises/NN-…/solution/.venv/bin/python`. V seznamu balíčků pak
-   musí být `django` a `ruff`.
+   Add Interpreter → Add Local Interpreter → Type: **uv** → Select
+   existing → `…/exercises/NN-…/solution/.venv/bin/python`. Cestu
+   k binárce uv (`~/.local/bin/uv`) PyCharm najde sám. V seznamu balíčků
+   pak musí být `django` a `ruff`.
 2. **Sources Root**: pravým tlačítkem na `solution/` → Mark Directory as →
    Sources Root (nebo Settings → Project Structure). Importy `config` a
    `pages` se tak hledají od `solution/`, stejně jako při
    `uv run manage.py`.
+
+**Proč typ uv, ne Virtualenv / Python:** uv do `.venv` neinstaluje `pip`.
+PyCharm u obyčejného venv čte seznam balíčků přes `pip`, takže by ukázal
+„Nothing to show“, i když `django` v `.venv` je (napovídání by
+fungovalo, chybí jen seznam). S typem uv se ptá přes `uv pip list`.
+`pip` do `.venv` neinstaluj, další `uv sync` by ho zase odebral.
 
 U dalšího cvičení obojí přepni na jeho `solution/` a starý Sources Root
 odeber (křížkem v Project Structure), aby se cvičení nepletla.

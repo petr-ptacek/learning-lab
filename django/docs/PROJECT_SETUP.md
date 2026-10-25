@@ -231,8 +231,11 @@ Totéž pouštěj před každým odevzdáním řešení.
 
 ## 14. PyCharm
 
-Interpreter přepni na `solution/.venv/bin/python` a `solution/` označ
-jako Sources Root. Podrobně v [`UV.md`](UV.md#nastavení-pycharmu).
+Interpreter přepni na `solution/.venv/bin/python` a přidej ho jako typ
+**uv** (Add Local Interpreter → Type: uv → Select existing). Jako
+Virtualenv / Python by PyCharm ukázal prázdný seznam balíčků, protože
+uv do `.venv` neinstaluje `pip`. `solution/` pak označ jako Sources Root.
+Podrobně v [`UV.md`](UV.md#nastavení-pycharmu).
 
 ---
 
