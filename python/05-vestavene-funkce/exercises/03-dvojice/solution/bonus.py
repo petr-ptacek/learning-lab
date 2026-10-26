@@ -15,4 +15,9 @@ def transpose_matrix(matrix):
     return result
 
 
+def transpose_matrix2(matrix: list[list[float]]) -> list[list[float]]:
+    return [list(row) for row in zip(*matrix)]
+
+
 print(f"transpose matrix: {transpose_matrix([[1, 2, 3], [4, 5, 6]])}")
+print(f"transpose matrix: {transpose_matrix2([[1, 2, 3], [4, 5, 6]])}")
