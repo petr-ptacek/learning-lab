@@ -1,10 +1,14 @@
 results = [
-    ("Anna", 87), ("Petr", 92), ("Eva", 87),
-    ("Jana", 75), ("Tomáš", 92), ("Lukáš", 60),
+    ("Anna", 87),
+    ("Petr", 92),
+    ("Eva", 87),
+    ("Jana", 75),
+    ("Tomáš", 92),
+    ("Lukáš", 60),
 ]
 
 
-    def leaderboard(results):
+def leaderboard(results):
     return sorted(results, key=lambda pair: (-pair[1], pair[0]))
 
 
