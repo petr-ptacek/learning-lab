@@ -18,3 +18,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 - [ ] 09-vyjimky
 - [ ] 10-soubory
 - [ ] 11-moduly-balicky
+- [ ] 12-pandas — práce s tabulkovými daty: `DataFrame` / `Series`,
+      načtení CSV / Excelu, filtrování, výběr sloupců, `groupby`,
+      agregace, spojování tabulek, export (staví na 10-soubory
+      a 11-moduly-balicky)
