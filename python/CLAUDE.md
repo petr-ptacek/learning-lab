@@ -35,6 +35,8 @@ Seznam:
 - typové anotace (`Iterable` vs. `list`, `Callable`, generika `[T]`,
   `Iterator` / `Generator`, `TypedDict`, srovnání s TS) v
   [`TYPE_HINTS.md`](docs/TYPE_HINTS.md)
+- walrus operátor `:=` (přiřazení ve výrazu, kdy ano / ne, pasti
+  s prioritou) v [`WALRUS_OPERATOR.md`](docs/WALRUS_OPERATOR.md)
 - modul `json` (`dumps` / `loads` / `dump` / `load`, převod typů,
   `ensure_ascii`, `default`, `JSONDecodeError`) v
   [`JSON.md`](docs/JSON.md)
