@@ -267,6 +267,79 @@ a `yield from` předá výsledky „nahoru“. Pro rozlišení, jestli je prvek
 seznam, se používá `isinstance(x, list)`: vrací `True`, když je `x`
 seznam (nebo jeho podtřída). Je to přesnější než `type(x) == list`.
 
+## `close`, `send`, `throw` — metody generátoru
+
+Generátor (ne každý iterátor, `map` nebo `zip` je nemají) má navíc tři
+metody. V aplikačním kódu je skoro nevoláš, ale je dobré vědět, co
+dělají:
+
+| Metoda | Co dělá | Jak důležité |
+|---|---|---|
+| `close()` | ukončí generátor: v místě, kde stojí na `yield`, vyvolá `GeneratorExit`, takže proběhne `finally` | pochopit |
+| `send(value)` | jako `next()`, ale pošle hodnotu **dovnitř**: `x = yield ...` ji dostane | vědět, že existuje |
+| `throw(exc)` | vyvolá výjimku uvnitř generátoru v místě `yield` | vědět, že existuje |
+
+### `close` a úklid
+
+Generátor, který něco otevře (soubor, spojení), musí uklidit i tehdy,
+když ho nikdo nedočte. Úklid patří do `finally`:
+
+```python
+def read_rows(path):
+    f = open(path)
+    try:
+        for line in f:
+            yield line
+    finally:
+        print("zavírám")
+        f.close()
+
+
+rows = read_rows("data.csv")
+next(rows)      # 'a\n'
+rows.close()    # vypíše "zavírám", i když se soubor nedočetl
+
+for row in read_rows("data.csv"):
+    break       # po break Python generátor zahodí a zavolá close sám → "zavírám"
+```
+
+`try` / `finally` a `with` přijdou v `09-vyjimky` a `10-soubory`. Zatím
+si pamatuj: kód za posledním `yield` se nemusí nikdy provést, `finally`
+ano.
+
+### `send` — jen pro představu
+
+```python
+def averager():
+    total = count = 0
+    average = None
+    while True:
+        value = yield average    # vydá průměr, pak čeká na hodnotu zvenku
+        total += value
+        count += 1
+        average = total / count
+
+
+a = averager()
+next(a)        # None — „nastartování“, dojde k prvnímu yield
+a.send(10)     # 10.0
+a.send(20)     # 15.0
+a.send(60)     # 30.0
+```
+
+Kde tyhle metody žijí, aniž je voláš sám:
+
+- **`@contextlib.contextmanager`** udělá z generátoru s jedním `yield`
+  kontextový manažer pro `with`. Uvnitř volá `next`, `throw` a `close`.
+- **pytest fixtures s `yield`**: kód za `yield` je úklid po testu, stejný
+  mechanismus.
+- **`async` / `await`**: před Pythonem 3.5 se asynchronní kód psal přes
+  generátory a `send`. Dnešní `async def` na stejném principu stojí
+  uvnitř.
+
+Když `send` nebo `throw` potkáš v kódu, je to starší knihovna nebo hodně
+specifický kód, ne běžný vzor.
+
 ## `itertools` — hotové nástroje
 
 Modul ze standardní knihovny (`import itertools`). Nejčastější:
