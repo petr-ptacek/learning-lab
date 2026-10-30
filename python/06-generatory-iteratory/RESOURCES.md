@@ -1,5 +1,11 @@
 # 06 — Generátory a iterátory — zdroje
 
+## V tomhle repu
+
+- [`../docs/GENERATORS_AND_ITERATORS.md`](../docs/GENERATORS_AND_ITERATORS.md)
+  — výtah z článků níže: protokol, pasti, vzory z praxe, výkon
+- [`../docs/ITERTOOLS.md`](../docs/ITERTOOLS.md) — `itertools` s příklady
+
 ## Oficiální dokumentace
 
 - [Tutorial — Iterators](https://docs.python.org/3/tutorial/classes.html#iterators)

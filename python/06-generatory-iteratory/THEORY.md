@@ -17,6 +17,14 @@ K čemu to bude: zpracování velkých dat po kouscích (soubory v `10-soubory`,
 stylu `data → filtr → převod → výsledek` bez mezilistů. V JS je to totéž
 co `function*` + `yield` a protokol `Symbol.iterator`.
 
+Do hloubky (víc, než se sem vešlo, výtah z článků v `RESOURCES.md`):
+
+- [`../docs/GENERATORS_AND_ITERATORS.md`](../docs/GENERATORS_AND_ITERATORS.md):
+  iterační protokol, opakovatelné vs. jednorázové, život generátoru,
+  pasti, vzory z praxe, výkon, srovnání s JS
+- [`../docs/ITERTOOLS.md`](../docs/ITERTOOLS.md): všechny důležité
+  funkce `itertools` s příklady, past u `groupby`
+
 ## Iterable vs. iterátor
 
 | | Co to je | Příklady |
@@ -354,6 +362,7 @@ Modul ze standardní knihovny (`import itertools`). Nejčastější:
 | `batched(it, n)` | dávky po `n` (tuple), od Pythonu 3.12 | `batched(range(5), 2)` → (0, 1), (2, 3), (4,) |
 
 Cvičení je nejdřív píšou ručně, `itertools` přijde v bonusech.
+Kompletní přehled s příklady: [`ITERTOOLS.md`](../docs/ITERTOOLS.md).
 
 ## Kdy co
 

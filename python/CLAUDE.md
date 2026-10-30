@@ -9,7 +9,17 @@ Specifika tohoto tématu — doplnit při založení:
 ## Docs
 
 Průřezová vysvětlení jsou v `docs/` — v `THEORY.md` na ně odkazuj místo
-opakování:
+opakování.
+
+Ke každému novému konceptu kromě `THEORY.md` napiš i **podrobný výtah
+z toho, na co odkazuje `RESOURCES.md`** (hlavně články Real Python,
+které jsou na čtení dlouhé, a oficiální docs, ve kterých se špatně
+hledá): samostatné soubory v `docs/`, prolinkované navzájem
+a odkázané z `THEORY.md`, `RESOURCES.md` i odsud. Prakticky, česky,
+s ověřenými ukázkami (každou spustit). `THEORY.md` zůstává přehled
+konceptu, hloubka patří do `docs/`.
+
+Seznam:
 
 - formátovací mini-jazyk (šířka, zarovnání, fill, oddělovače, přesnost,
   typy) v [`STRING_FORMATTING.md`](docs/STRING_FORMATTING.md)
@@ -19,6 +29,9 @@ opakování:
 - velikost písmen (`lower` / `upper` / `casefold` / `title` …),
   porovnávání bez ohledu na velikost písmen a diakritiku v
   [`STRING_CASE_AND_COMPARISON.md`](docs/STRING_CASE_AND_COMPARISON.md)
+- generátory a iterátory do hloubky (protokol, pasti, vzory z praxe,
+  výkon) v [`GENERATORS_AND_ITERATORS.md`](docs/GENERATORS_AND_ITERATORS.md)
+- modul `itertools` s příklady v [`ITERTOOLS.md`](docs/ITERTOOLS.md)
 - modul `json` (`dumps` / `loads` / `dump` / `load`, převod typů,
   `ensure_ascii`, `default`, `JSONDecodeError`) v
   [`JSON.md`](docs/JSON.md)
