@@ -10,6 +10,8 @@ a vzory z praxe. Hotové nástroje modulu `itertools` jsou zvlášť
 v [`ITERTOOLS.md`](ITERTOOLS.md).
 
 Všechny ukázky jsou ověřené na Pythonu 3.14.
+Jak otypovat parametr, který jde procházet (`Iterable[int]`), a generátor
+(`Iterator[int]`), je v [`TYPE_HINTS.md`](TYPE_HINTS.md#generátory).
 
 ## Obsah
 

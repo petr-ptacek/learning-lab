@@ -32,6 +32,9 @@ Seznam:
 - generátory a iterátory do hloubky (protokol, pasti, vzory z praxe,
   výkon) v [`GENERATORS_AND_ITERATORS.md`](docs/GENERATORS_AND_ITERATORS.md)
 - modul `itertools` s příklady v [`ITERTOOLS.md`](docs/ITERTOOLS.md)
+- typové anotace (`Iterable` vs. `list`, `Callable`, generika `[T]`,
+  `Iterator` / `Generator`, `TypedDict`, srovnání s TS) v
+  [`TYPE_HINTS.md`](docs/TYPE_HINTS.md)
 - modul `json` (`dumps` / `loads` / `dump` / `load`, převod typů,
   `ensure_ascii`, `default`, `JSONDecodeError`) v
   [`JSON.md`](docs/JSON.md)
