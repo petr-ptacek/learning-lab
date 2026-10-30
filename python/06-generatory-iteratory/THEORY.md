@@ -128,6 +128,73 @@ Jako jediný argument funkce stačí jedny závorky: `sum(x * x for x in ...)`.
 Krátký generátor piš jako výraz. Když potřebuješ víc řádků, stav nebo
 podmínky, napiš generátorovou funkci.
 
+## Líné vyhodnocení na příkladu
+
+Jádro celého konceptu: seznam se počítá **hned a celý** (eager),
+generátor **až na vyžádání a po jednom** (lazy). Nejlíp je to vidět na
+výpisech. Dva kroky, „načti“ a „zdvojnásob“, jednou se seznamy, jednou
+s generátory:
+
+```python
+def load(n):
+    print(f"načítám {n}")
+    return n
+
+
+def double(n):
+    print(f"  zdvojuji {n}")
+    return n * 2
+```
+
+| Seznamy `[...]` | Generátory `(...)` |
+|---|---|
+| `loaded = [load(n) for n in [1, 2, 3]]`<br>`doubled = [double(n) for n in loaded]`<br>`print("hotovo, teď čtu")`<br>`for d in doubled: print("výsledek", d)` | `loaded = (load(n) for n in [1, 2, 3])`<br>`doubled = (double(n) for n in loaded)`<br>`print("hotovo, teď čtu")`<br>`for d in doubled: print("výsledek", d)` |
+
+Výstup (ověřeno):
+
+```
+--- seznamy               --- generátory
+načítám 1                 hotovo, teď čtu
+načítám 2                 načítám 1
+načítám 3                   zdvojuji 1
+  zdvojuji 1              výsledek 2
+  zdvojuji 2              načítám 2
+  zdvojuji 3                zdvojuji 2
+hotovo, teď čtu           výsledek 4
+výsledek 2                načítám 3
+výsledek 4                  zdvojuji 3
+výsledek 6                výsledek 6
+```
+
+Co z toho plyne:
+
+- **Seznamy** jdou po vrstvách: nejdřív se načte všechno, pak se
+  všechno zdvojnásobí, a teprve pak se čte. V paměti jsou v jednu
+  chvíli celé dva seznamy.
+- **Generátory** při vytvoření neudělají nic (`hotovo, teď čtu` je
+  první). Každá hodnota pak projde **celou cestou** (načíst → zdvojit →
+  vypsat), než se začne další. V paměti je vždycky jen jedna.
+- Když si vezmeš jen první výsledek, `next(doubled)`, generátory vypíšou
+  jen `načítám 1` a `zdvojuji 1`. Zbytek se nikdy nespočítá. Seznamy by
+  stejně udělaly všechnu práci dopředu.
+
+Rozdíl v paměti pro milion čísel (`sys.getsizeof`, Python 3.14):
+
+```python
+import sys
+
+sys.getsizeof([n * 2 for n in range(1_000_000)])   # 8448728 — cca 8 MB, jen seznam odkazů
+sys.getsizeof(n * 2 for n in range(1_000_000))     # 208 — bajtů, ať je dat kolik chce
+sum(n * 2 for n in range(1_000_000))               # 999999000000 — výsledek stejný
+```
+
+Cena za to: generátor jde projít jen jednou, nemá `len` ani index,
+a každá hodnota se počítá znovu, když vytvoříš nový generátor.
+
+V JS stejný rozdíl uvidíš mezi `arr.map(...).filter(...)` (každý krok
+nové pole) a generátorem `function*` nebo iterátorovými helpery
+(`Iterator.prototype.map`).
+
 ## Líné vyhodnocení a nekonečné sekvence
 
 Generátor počítá jen to, co si někdo vyžádá. Proto může být nekonečný:
