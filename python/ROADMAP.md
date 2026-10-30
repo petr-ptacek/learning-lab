@@ -9,7 +9,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
       scope) — vestavěné funkce Pythonu jsou samostatný koncept, viz
       05-vestavene-funkce
 - [x] 04-datove-struktury
-- [ ] 05-vestavene-funkce — `len`, `min`/`max`, `sum`, `sorted`, `enumerate`,
+- [x] 05-vestavene-funkce — `len`, `min`/`max`, `sum`, `sorted`, `enumerate`,
       `zip`, `map`, `filter`, `any`/`all` (staví na 04-datove-struktury)
 - [ ] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
       `next()`/`iter()` (staví na 03-funkce a 04-datove-struktury)
