@@ -267,7 +267,7 @@ value({"name": "Mléko", "price": 24.9, "qty": 10})   # 249.0
 
 Za běhu je to obyčejný `dict`. Editor ale hlídá názvy klíčů a typy
 hodnot. Pro data s chováním (metody) jsou lepší třídy a `dataclass`
-(`08-oop-zaklady`).
+(`07-oop-zaklady`).
 
 ## `Any` a kdy ho nepoužít
 

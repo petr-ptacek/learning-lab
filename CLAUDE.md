@@ -89,7 +89,7 @@ zkopírovat `_template/NN-nazev-konceptu/` a přejmenovat.
   obsahovat celé řešení včetně bonusu (klidně zkopírovaný základ
   s úpravami). Když je bonus v `solution/` rovnou v `main.py`, při
   kontrole to neber jako chybu — jen ho můžeš zmínit, že by šel oddělit.
-  Až bude probraný `11-moduly-balicky`, může `bonus.py` základ z `main.py`
+  Až bude probraný `12-moduly-balicky`, může `bonus.py` základ z `main.py`
   importovat místo kopírování. Další složky zaváděj jen tehdy, když si to
   koncept opravdu vyžádá — do té doby nepřipravuj strukturu na
   hypotetické budoucí případy.

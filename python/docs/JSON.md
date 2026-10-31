@@ -161,7 +161,7 @@ with open("books.json", encoding="utf-8") as f:
 
 `encoding="utf-8"` uváděj vždy. Výchozí kódování závisí na systému
 a s `ensure_ascii=False` by na Windows mohla diakritika skončit
-rozbitá. Práce se soubory a `with` je v konceptu `10-soubory`.
+rozbitá. Práce se soubory a `with` je v konceptu `11-soubory`.
 
 ## Z příkazové řádky
 

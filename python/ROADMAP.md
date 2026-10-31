@@ -13,12 +13,19 @@ prostudovaná + cvičení vyřešená), ne jen založený.
       `zip`, `map`, `filter`, `any`/`all` (staví na 04-datove-struktury)
 - [x] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
       `next()`/`iter()` (staví na 03-funkce a 04-datove-struktury)
-- [ ] 07-stringy
-- [ ] 08-oop-zaklady — třídy, instance, `__init__`, metody, atributy
-- [ ] 09-vyjimky
-- [ ] 10-soubory
-- [ ] 11-moduly-balicky
-- [ ] 12-pandas — práce s tabulkovými daty: `DataFrame` / `Series`,
+- [ ] 07-oop-zaklady — třída a instance, `__init__` a `self`, atributy
+      instance vs. atributy třídy, metody, `@property`, `@classmethod` /
+      `@staticmethod`, dunder metody (`__str__`, `__repr__`, `__eq__`,
+      `__len__`, `__iter__`), `dataclass`
+- [ ] 08-oop-dedicnost — dědičnost, `super()`, abstraktní základ, mixiny
+      a MRO, vnořená třída (`Meta`), `__init_subclass__` a základ
+      metatříd a deskriptorů: jak Django model posbírá svá pole (staví
+      na 07-oop-zaklady, připravuje na Django modely a class-based views)
+- [ ] 09-stringy
+- [ ] 10-vyjimky
+- [ ] 11-soubory
+- [ ] 12-moduly-balicky
+- [ ] 13-pandas — práce s tabulkovými daty: `DataFrame` / `Series`,
       načtení CSV / Excelu, filtrování, výběr sloupců, `groupby`,
-      agregace, spojování tabulek, export (staví na 10-soubory
-      a 11-moduly-balicky)
+      agregace, spojování tabulek, export (staví na 11-soubory
+      a 12-moduly-balicky)

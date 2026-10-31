@@ -12,7 +12,7 @@ Na čem to stavíš: funkce a rekurze z [`03-funkce`](../03-funkce/THEORY.md),
 kolekce z [`04-datove-struktury`](../04-datove-struktury/THEORY.md)
 a generátorové výrazy uvnitř `sum` / `any` / `max` z `05`.
 
-K čemu to bude: zpracování velkých dat po kouscích (soubory v `10-soubory`,
+K čemu to bude: zpracování velkých dat po kouscích (soubory v `11-soubory`,
 řádky z databáze, stránkované API), nekonečné sekvence a „pipeline“ ve
 stylu `data → filtr → převod → výsledek` bez mezilistů. V JS je to totéž
 co `function*` + `yield` a protokol `Symbol.iterator`.
@@ -46,7 +46,7 @@ next(it, "konec")           # 'konec' — s defaultem výjimka nenastane
 - `iter(x)` vyrobí z iterable nový iterátor. Ze seznamu můžeš udělat
   kolik iterátorů chceš, každý začíná od začátku.
 - `next(it)` vrátí další hodnotu. Za koncem vyhodí `StopIteration`
-  (výjimky v `09-vyjimky`), s druhým argumentem vrátí default.
+  (výjimky v `10-vyjimky`), s druhým argumentem vrátí default.
 - Iterátor jde jen **dopředu** a **jednou**. Vyčerpaný iterátor zůstane
   prázdný. Proto `list(m)` podruhé vrátí `[]`.
 
@@ -315,7 +315,7 @@ for row in read_rows("data.csv"):
     break       # po break Python generátor zahodí a zavolá close sám → "zavírám"
 ```
 
-`try` / `finally` a `with` přijdou v `09-vyjimky` a `10-soubory`. Zatím
+`try` / `finally` a `with` přijdou v `10-vyjimky` a `11-soubory`. Zatím
 si pamatuj: kód za posledním `yield` se nemusí nikdy provést, `finally`
 ano.
 

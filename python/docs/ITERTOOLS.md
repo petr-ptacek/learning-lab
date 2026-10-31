@@ -158,5 +158,5 @@ a jako ukázka idiomatického stylu. Nejdřív si je ale zkus napsat sám,
 několik z nich je ve cvičeních `06-generatory-iteratory`.
 
 Balíček [`more-itertools`](https://more-itertools.readthedocs.io/)
-(instalace přes uv, viz `11-moduly-balicky`) obsahuje recepty
+(instalace přes uv, viz `12-moduly-balicky`) obsahuje recepty
 a desítky dalších nástrojů hotové.

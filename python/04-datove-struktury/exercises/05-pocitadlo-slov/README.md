@@ -4,7 +4,7 @@ První `dict` — klíč je slovo, hodnota počet výskytů. Typický vzor
 `counts[key] = counts.get(key, 0) + 1`.
 
 Na rozdělení textu potřebuješ dvě metody řetězce, které podrobně přijdou
-až v `07-stringy`: `text.lower()` (malá písmena) a `text.split()`
+až v `09-stringy`: `text.lower()` (malá písmena) a `text.split()`
 (rozdělí podle mezer na seznam slov).
 
 ## Požadavky

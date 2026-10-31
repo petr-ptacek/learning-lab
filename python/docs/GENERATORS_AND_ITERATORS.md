@@ -31,7 +31,7 @@ Jak otypovat parametr, který jde procházet (`Iterable[int]`), a generátor
 ## 1. Iterační protokol: `__iter__` a `__next__`
 
 Všechno iterování v Pythonu stojí na dvou metodách. Třídy přijdou až
-v `08-oop-zaklady`, tady jen pro představu, co `iter()` a `next()` volají:
+v `07-oop-zaklady`, tady jen pro představu, co `iter()` a `next()` volají:
 
 | Volání | Volá na objektu | Vrací |
 |---|---|---|
@@ -312,7 +312,7 @@ Otevřený soubor je sám iterátor přes řádky. Nečte celý soubor do pamět
 
 ```python
 def errors(path):
-    with open(path) as f:          # with zavře soubor, viz 10-soubory
+    with open(path) as f:          # with zavře soubor, viz 11-soubory
         for line in f:
             if "ERROR" in line:
                 yield line.rstrip()
