@@ -275,6 +275,10 @@ a `yield from` předá výsledky „nahoru“. Pro rozlišení, jestli je prvek
 seznam, se používá `isinstance(x, list)`: vrací `True`, když je `x`
 seznam (nebo jeho podtřída). Je to přesnější než `type(x) == list`.
 
+Rozdíl `yield` vs. `yield from`, jak hodnoty v rekurzi probublávají
+nahoru a typické chyby rozebírá
+[`docs/GENERATORS_AND_ITERATORS.md`](../docs/GENERATORS_AND_ITERATORS.md#4-yield-from-a-return-v-generátoru).
+
 ## `close`, `send`, `throw` — metody generátoru
 
 Generátor (ne každý iterátor, `map` nebo `zip` je nemají) má navíc tři

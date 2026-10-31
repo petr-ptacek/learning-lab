@@ -121,6 +121,48 @@ apply(lambda n: n * 2, 5)    # 10
 `Callable[[typy argumentů], návratový typ]`. TS:
 `(func: (n: number) => number, x: number) => number`.
 
+## `*args` a `**kwargs`
+
+Anotace se píše pro **jeden** argument, ne pro celou kolekci. Python
+je sám zabalí: `*args` do `tuple`, `**kwargs` do `dict` s klíči `str`.
+
+```python
+from collections.abc import Iterable, Iterator
+
+
+def total(*numbers: int) -> int:             # uvnitř: tuple[int, ...]
+    return sum(numbers)
+
+
+def tag(name: str, **attrs: str) -> str:     # uvnitř: dict[str, str]
+    parts = "".join(f' {k}="{v}"' for k, v in attrs.items())
+    return f"<{name}{parts}>"
+
+
+def chain[T](*iterables: Iterable[T]) -> Iterator[T]:
+    for iterable in iterables:
+        yield from iterable
+
+
+total(1, 2, 3)                    # 6
+tag("a", href="/", title="Domů")  # '<a href="/" title="Domů">'
+total(1, "2")                     # mypy: Argument 2 to "total" has incompatible type "str"; expected "int"
+```
+
+Častá chyba je anotovat celou kolekci:
+
+```python
+def wrong(*numbers: tuple[int]) -> int: ...
+
+
+wrong(1, 2)   # mypy: Argument 1 to "wrong" has incompatible type "int"; expected "tuple[int]"
+```
+
+Tady by **každý** argument musel být tuple. TS to má naopak:
+`(...numbers: number[])`, tedy typ celého pole. Jak `*args` / `**kwargs`
+fungují bez typů, je v
+[`ARGS_KWARGS_AND_UNPACKING.md`](ARGS_KWARGS_AND_UNPACKING.md).
+
 ## Generika: typová proměnná
 
 Když funkce funguje pro libovolný typ prvků a výsledek má **stejný typ

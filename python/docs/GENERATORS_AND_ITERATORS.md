@@ -18,7 +18,7 @@ Jak otypovat parametr, který jde procházet (`Iterable[int]`), a generátor
 1. [Iterační protokol: `__iter__` a `__next__`](#1-iterační-protokol-__iter__-a-__next__)
 2. [Iterable vs. iterátor: kdo se dá projít víckrát](#2-iterable-vs-iterátor-kdo-se-dá-projít-víckrát)
 3. [Život generátoru](#3-život-generátoru)
-4. [`return` v generátoru a `yield from`](#4-return-v-generátoru-a-yield-from)
+4. [`yield from` a `return` v generátoru](#4-yield-from-a-return-v-generátoru)
 5. [Kdy se co vyhodnotí v generátorovém výrazu](#5-kdy-se-co-vyhodnotí-v-generátorovém-výrazu)
 6. [Pasti](#6-pasti)
 7. [`iter(funkce, zarážka)`](#7-iterfunkce-zarážka)
@@ -144,7 +144,83 @@ proměnné, místo v kódu, rozběhnuté cykly. Proto v něm může být
 přes `close()` a úklid ve `finally` popisuje
 [`THEORY.md`](../06-generatory-iteratory/THEORY.md#close-send-throw--metody-generátoru).
 
-## 4. `return` v generátoru a `yield from`
+## 4. `yield from` a `return` v generátoru
+
+### Co dělá `yield from`
+
+Při běžném procházení dělají tyhle dva zápisy totéž:
+
+```python
+yield from other
+
+for value in other:
+    yield value
+```
+
+Generátor vezme **všechny hodnoty** z `other` a vydá je jednu po druhé
+dál, jako by je vydával sám. Volající nepozná, že pocházejí odjinud.
+`other` může být jakýkoliv iterable: seznam, string, `range`, jiný
+generátor. JS obdoba je `yield* other` ve `function*`.
+
+### `yield` vs. `yield from`: krabice vs. obsah
+
+Volání generátorové funkce nic nespustí, jen vyrobí generátor (viz
+[sekce 3](#3-život-generátoru)). Hodnoty z něj musí někdo vytáhnout:
+
+```python
+def inner():
+    yield "a"
+    yield "b"
+
+
+def outer_wrong():
+    yield inner()          # vydá JEDNU hodnotu: samotný generátor
+
+
+def outer_right():
+    yield from inner()     # vydá "a", pak "b"
+
+
+list(outer_wrong())   # [<generator object inner at 0x...>]
+list(outer_right())   # ['a', 'b']
+```
+
+`yield` pošle generátor nahoru jako jednu zavřenou krabici.
+`yield from` krabici otevře a pošle nahoru její obsah.
+
+### Rekurze: hodnoty probublávají nahoru
+
+U rekurzivního generátoru (cvičení `06-yield-from`) se to děje na
+každé úrovni:
+
+```python
+def flatten(nested):
+    for item in nested:
+        if isinstance(item, list):
+            yield from flatten(item)
+        else:
+            yield item
+
+
+list(flatten([1, [2, [3]]]))   # [1, 2, 3]
+```
+
+```
+flatten([3])            vydá 3
+flatten([2, [3]])       vydá 2, přes yield from přepošle 3
+flatten([1, [2, [3]]])  vydá 1, přes yield from přepošle 2, 3
+list(...)               dostane 1, 2, 3
+```
+
+Každá úroveň vydá své hodnoty a přepošle nahoru všechno, co vydaly
+úrovně pod ní. Dvě časté chyby v rekurzi:
+
+| Zápis v rekurzivní větvi | Výsledek pro `[1, [2, [3]]]` | Co se stalo |
+|---|---|---|
+| `yield flatten(item)` | `[1, <generator object ...>]` | nahoru odešla zavřená krabice |
+| `flatten(item)` (bez `yield`) | `[1]` | generátor se vyrobil, ale nikdo ho nespustil, hodnoty se ztratily |
+
+### `return` v generátoru
 
 `return hodnota` v generátoru sekvenci ukončí. Hodnota se při běžném
 procházení (`for`, `list`) **zahodí**. Dostaneš ji jen jako výsledek
@@ -170,9 +246,12 @@ list(outer())
 V běžném kódu `return` v generátoru používáš bez hodnoty, jako
 předčasný konec („už nic dalšího nevydám“).
 
-`yield from x` je víc než zkratka za `for v in x: yield v`. Přeposílá
-i `send`, `throw` a `close` do vnitřního generátoru. Pro tebe to
-znamená: když skládáš generátory, používej `yield from`, ne ruční cyklus.
+### Víc než zkratka
+
+`yield from x` je víc než `for v in x: yield v`: vrací hodnotu z
+`return` (viz výše) a přeposílá i `send`, `throw` a `close` do vnitřního
+generátoru. Pro běžné použití z toho plyne jen tohle: když skládáš
+generátory, používej `yield from`, ne ruční cyklus.
 
 ## 5. Kdy se co vyhodnotí v generátorovém výrazu
 
