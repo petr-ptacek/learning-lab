@@ -21,7 +21,6 @@ def lines(text: str):
         if stripped.startswith("#") or stripped == "":
             continue
 
-        print("čtu: ", stripped)
         yield stripped
 
 
@@ -53,5 +52,28 @@ def messages(records: Iterable):
     return (r[2] for r in records)
 
 
-print(next(with_level(parse(lines(LOG)), "ERROR")))
+# print(next(with_level(parse(lines(LOG)), "ERROR")))
 # print(list(messages(with_level(parse(lines(LOG)), "ERROR"))))
+
+
+# BONUS
+def errors_per_hour(records: Iterable):
+    result = dict()
+
+    for time, _, _ in with_level(records, "ERROR"):
+        hours = time.split(":")[0]
+        result[hours] = result.get(hours, 0) + 1
+
+    return result
+
+
+print(errors_per_hour(parse(lines(LOG))))
+
+
+def count(iterable: Iterable) -> int:
+    return sum(1 for _ in iterable)
+
+
+print(count(lines(LOG)))
+print(count([]))
+print(count(x for x in range(10) if x % 3 == 0))
