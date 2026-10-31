@@ -11,7 +11,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
 - [x] 04-datove-struktury
 - [x] 05-vestavene-funkce — `len`, `min`/`max`, `sum`, `sorted`, `enumerate`,
       `zip`, `map`, `filter`, `any`/`all` (staví na 04-datove-struktury)
-- [ ] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
+- [x] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
       `next()`/`iter()` (staví na 03-funkce a 04-datove-struktury)
 - [ ] 07-stringy
 - [ ] 08-oop-zaklady — třídy, instance, `__init__`, metody, atributy
