@@ -13,7 +13,7 @@ prostudovaná + cvičení vyřešená), ne jen založený.
       `zip`, `map`, `filter`, `any`/`all` (staví na 04-datove-struktury)
 - [x] 06-generatory-iteratory — `yield`, generátorové výrazy, iterátory,
       `next()`/`iter()` (staví na 03-funkce a 04-datove-struktury)
-- [ ] 07-oop-zaklady — třída a instance, `__init__` a `self`, atributy
+- [x] 07-oop-zaklady — třída a instance, `__init__` a `self`, atributy
       instance vs. atributy třídy, metody, `@property`, `@classmethod` /
       `@staticmethod`, dunder metody (`__str__`, `__repr__`, `__eq__`,
       `__len__`, `__iter__`), `dataclass`
