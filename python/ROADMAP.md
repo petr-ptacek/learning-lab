@@ -19,8 +19,9 @@ prostudovaná + cvičení vyřešená), ne jen založený.
       `__len__`, `__iter__`), `dataclass`
 - [ ] 08-oop-dedicnost — dědičnost, `super()`, abstraktní základ, mixiny
       a MRO, vnořená třída (`Meta`), `__init_subclass__` a základ
-      metatříd a deskriptorů: jak Django model posbírá svá pole (staví
-      na 07-oop-zaklady, připravuje na Django modely a class-based views)
+      metatříd a deskriptorů: jak Django model posbírá svá pole, `Enum`
+      (`TextChoices`) (staví na 07-oop-zaklady, připravuje na Django
+      modely a class-based views)
 - [ ] 09-stringy
 - [ ] 10-vyjimky
 - [ ] 11-soubory

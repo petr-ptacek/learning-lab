@@ -47,6 +47,23 @@ Seznam:
   [`DUNDER_METHODS.md`](docs/DUNDER_METHODS.md)
 - `@dataclass` (`field`, `frozen`, `order`, `__post_init__`, `asdict`)
   v [`DATACLASSES.md`](docs/DATACLASSES.md)
+- dědičnost, přepsání metody, `super()`, atributy třídy jako konfigurace,
+  `isinstance`, kompozice vs. dědičnost v
+  [`INHERITANCE_AND_SUPER.md`](docs/INHERITANCE_AND_SUPER.md)
+- vícenásobná dědičnost, MRO, kooperativní `super()`, mixiny (Django
+  views) v
+  [`MULTIPLE_INHERITANCE_AND_MIXINS.md`](docs/MULTIPLE_INHERITANCE_AND_MIXINS.md)
+- abstraktní třídy (`ABC`, `@abstractmethod`, template method),
+  `collections.abc`, `Protocol` v
+  [`ABSTRACT_BASE_CLASSES.md`](docs/ABSTRACT_BASE_CLASSES.md)
+- deskriptory (`__get__` / `__set__` / `__set_name__`, pořadí hledání
+  atributu, `property` a pole Django modelu) v
+  [`DESCRIPTORS.md`](docs/DESCRIPTORS.md)
+- vytvoření třídy, `__init_subclass__`, metatřídy, jak vzniká Django
+  model a `_meta` v
+  [`CLASS_CREATION_AND_METACLASSES.md`](docs/CLASS_CREATION_AND_METACLASSES.md)
+- výčtové typy (`Enum`, `IntEnum` / `StrEnum`, metody na enumu, hodnota
+  s popiskem, Django `TextChoices`) v [`ENUMS.md`](docs/ENUMS.md)
 - modul `json` (`dumps` / `loads` / `dump` / `load`, převod typů,
   `ensure_ascii`, `default`, `JSONDecodeError`) v
   [`JSON.md`](docs/JSON.md)

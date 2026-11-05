@@ -16,7 +16,7 @@ atributy drží ve slovníku) a iterační protokol z
 [`06-generatory-iteratory`](../06-generatory-iteratory/THEORY.md)
 (`__iter__` napíšeš jako generátor).
 
-K čemu to bude: navazuje `08-oop-dedicnost`
+K čemu to bude: navazuje [`08-oop-dedicnost`](../08-oop-dedicnost/THEORY.md)
 (dědičnost, mixiny, vnořená `class Meta`, jak Django model „posbírá“
 svá pole), pak Django modely, formuláře a class-based views.
 JS obdoba: `class` s `constructor` a `this`.
@@ -118,7 +118,7 @@ třídy dávej konstanty a výchozí hodnoty.
 V Djangu: `title = models.CharField(...)` je atribut **třídy** `Book`.
 Popisuje sloupec, je jen jeden. Hodnota konkrétní knihy (`book.title`)
 je atribut **instance**. Jak Django z jednoho udělá druhé, rozebírá
-`08-oop-dedicnost`.
+[`08-oop-dedicnost`](../08-oop-dedicnost/THEORY.md).
 
 ## Tři druhy metod
 
@@ -294,7 +294,7 @@ Book.Meta.ordering               # ['title']
 
 Přesně tohle je `class Meta:` v Django modelu. Sama nic nedělá, je to
 schránka na nastavení. Čte ji až Django při vytvoření třídy modelu,
-podrobně v `08-oop-dedicnost`.
+podrobně v [`08-oop-dedicnost`](../08-oop-dedicnost/THEORY.md).
 
 ## Django model očima tohoto konceptu
 

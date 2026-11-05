@@ -98,7 +98,7 @@ milk.color                    # AttributeError: 'Product' object has no attribut
 
 (Výjimka z pravidla: `@property` a další *deskriptory* na třídě mají
 přednost i před slovníkem instance. Proto setter property zachytí i
-zápis. Detaily jsou v `08-oop-dedicnost`.)
+zápis. Detaily jsou v [`DESCRIPTORS.md`](DESCRIPTORS.md).)
 
 ## 4. Zastínění a sdílené měnitelné atributy
 
@@ -274,7 +274,7 @@ Třída je instance typu `type`, a `type` je „továrna na třídy“
 - třídu jde vytvořit i za běhu přes `type("Jméno", (), {...})`.
   Nebudeš to psát, ale Django to tak dělá uvnitř.
 
-Metatřídy podrobně: `08-oop-dedicnost`.
+Metatřídy podrobně: [`CLASS_CREATION_AND_METACLASSES.md`](CLASS_CREATION_AND_METACLASSES.md).
 
 ## 9. Vnořená třída
 
@@ -302,7 +302,7 @@ i `ordering`, nešlo by poznat, jestli je to sloupec, nebo nastavení,
 a nemohl bys mít sloupec jménem `ordering`. `Meta` drží nastavení
 odděleně. Django ji při vytvoření třídy modelu přečte (právě přes
 `getattr(meta, "ordering", ...)`) a výsledek uloží do `Book._meta`.
-Jak přesně, je v `08-oop-dedicnost`.
+Jak přesně, je v [`CLASS_CREATION_AND_METACLASSES.md`](CLASS_CREATION_AND_METACLASSES.md).
 
 Stejný vzor uvidíš v `ModelForm` (`class Meta: model = Book; fields =
 [...]`) a v DRF serializerech.
