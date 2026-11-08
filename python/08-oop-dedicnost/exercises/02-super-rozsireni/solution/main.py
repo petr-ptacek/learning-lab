@@ -23,7 +23,7 @@ class BankAccount:
 
         return True
 
-    def transfer(self, to: BankAccount, amount: float):
+    def transfer(self, to: "BankAccount", amount: float):
         if not self.withdraw(amount):
             return False
 
